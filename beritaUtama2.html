@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorium Business Analytics - Transforming Data into Decisions</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200..900&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- General & Body Styling (Gabungan dari beritaUtama & beritaUtama2) --- */
+        body {
+            font-family: "Nunito", sans-serif;
+            padding-top: 80px; /* Supaya konten tidak tertutup header yang fixed */
+            background-color: #f8f9fa; /* Warna background halaman sedikit abu terang */
+        }
+
+        /* --- Navbar Kustom (Dari beritaUtama2.html) --- */
+        .navbar {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            backface-visibility: hidden;
+            -webkit-font-smoothing: antialiased;
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+            box-shadow: 0 2px 2px rgba(0,0,0,0.05); /* Menambahkan shadow dari beritaUtama */
+        }
+
+        .navbar-brand .brand-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #212529;
+            line-height: 1.2;
+        }
+        .navbar-brand .brand-tagline {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+        .navbar .nav-link {
+            font-weight: 500;
+            color: #212529 !important; /* Dibuat !important agar tidak tertimpa styling beritaUtama */
+        }
+
+        /* === DROPDOWN HOVER EFFECT === */
+        @media (min-width: 992px) {
+            .navbar .dropdown:hover > .dropdown-menu {
+                display: block;
+                margin-top: 0;
+            }
+
+            .navbar .dropdown-menu {
+                margin-top: 0;
+                animation: fadeInDown 0.3s ease;
+            }
+
+            @keyframes fadeInDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        }
+        
+        /* --- Styling Konten Utama (Dari beritaUtama.html) --- */
+        .breadcrumb {
+            font-size: 1.1rem;
+            color: #6c757d;
+        }
+
+        /* ******************************************************** */
+        /* START: MODIFIKASI TAMBAHAN UNTUK TAUTAN BREADCRUMB */
+        /* Tautan di breadcrumb menggunakan text-secondary (#6c757d) */
+        .breadcrumb a {
+            color: #6c757d !important;
+        }
+        .breadcrumb a:hover {
+            color: #0d6efd !important; /* Ubah warna biru saat di-hover */
+        }
+        /* END: MODIFIKASI TAMBAHAN */
+        /* ******************************************************** */
+
+
+        .article-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .meta-info {
+            font-size: 0.85rem;
+            color: #198754; /* Warna hijau mirip contoh */
+            margin-bottom: 20px;
+        }
+        
+        .meta-info span {
+            margin-right: 15px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .meta-info i {
+            margin-right: 2.5px;
+            font-size: 1.1em;
+        }
+
+        /* PENTING: Agar lebar gambar sama dengan teks */
+        .main-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            /* Border biru seperti di gambar */
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .article-content {
+            text-align: justify; /* Menambahkan justify agar terlihat lebih rapi */
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Styling Sidebar (Prestasi & Announcement & Category) */
+        .sidebar-title {
+            font-weight: 700;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            margin-top: 10px;
+        }
+
+        /* Membuat Kotak Abu-abu untuk Placeholder Gambar */
+        .img-placeholder-box {
+            width: 100px;     /* Lebar kotak */
+            height: 100px;    /* Tinggi kotak */
+            background-color: #d1d5db; /* Warna abu-abu */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            flex-shrink: 0; /* Agar kotak tidak mengecil */
+        }
+
+        .img-placeholder-box i {
+            font-size: 3rem; /* Ukuran ikon orang di dalam kotak */
+            color: #fff;
+        }
+
+        .sidebar-item h6 {
+            font-weight: 600;
+            font-size: 0.7rem;
+            margin-bottom: 5px;
+            line-height: 1.2;
+        }
+        
+        .sidebar-item p {
+            font-size: 0.75rem;
+            color: #666;
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+
+        .sidebar-meta {
+            font-size: 0.6rem;
+            color: #198754;
+        }
+
+        /* Styling Category Link Hover */
+        .category-list a:hover {
+            color: #0d6efd !important; /* Ubah warna biru saat di-hover */
+        }
+        
+        /* Penyesuaian lebar kolom - diperlebar untuk konten utama */
+        .col-lg-7 {
+            flex: 0 0 auto;
+            width: 65%; 
+        }
+        .col-lg-4 {
+            flex: 0 0 auto;
+            width: 33%;
+        }
+        .offset-lg-1 {
+            margin-left: 2%; 
+        }
+    </style>
+</head>
+<body>
+
+    <nav
+        class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm fixed-top"
+        > <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="logo.png.png" alt="Logo" width="50" height="50" class="me-2" />
+            <div>
+                <span class="brand-title d-block"
+                >Laboratorium Business Analytics</span
+                >
+                <small class="brand-tagline"
+                >Transforming Data Into Decisions</small
+                >
+            </div>
+            </a>
+            <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            >
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                <a class="nav-link" href="#">Beranda</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">Profil</a>
+                </li>
+                <li class="nav-item dropdown">
+                <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    id="navbarDropdownPublikasi"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                >
+                    Publikasi
+                </a>
+                <ul
+                    class="dropdown-menu"
+                    aria-labelledby="navbarDropdownPublikasi"
+                >
+                    <li><a class="dropdown-item" href="#">Publikasi 1</a></li>
+                    <li><a class="dropdown-item" href="#">Publikasi 2</a></li>
+                </ul>
+                </li>
+                <li class="nav-item dropdown">
+                <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    id="navbarDropdownPeminjaman"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                >
+                    Peminjaman Lab
+                </a>
+                <ul
+                    class="dropdown-menu"
+                    aria-labelledby="navbarDropdownPeminjaman"
+                >
+                    <li><a class="dropdown-item" href="#">Formulir</a></li>
+                    <li><a class="dropdown-item" href="#">Jadwal Lab</a></li>
+                </ul>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">Kontak</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-xl">
+        <div class="row mt-4 mb-5">
+            
+            <div class="col-lg-7">
+                <div class="breadcrumb mb-2">
+                    <a href="#" class="text-decoration-none">Beranda</a> / 
+                    <a href="berita.html" class="text-decoration-none">Berita</a> /
+                </div>
+                <h1 class="article-title">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</h1>
+
+                <div class="meta-info">
+                    <span><i class="bi bi-person-circle"></i>User</span>
+                    <span><i class="bi bi-calendar"></i> 31 Nov, 2025</span>
+                    <span><i class="bi bi-people-fill"></i> Mhs Polinema</span>
+                </div>
+                
+                <img src="pantai.jpeg" alt="Foto Utama" class="main-image">
+
+                <div class="article-content">
+                    <p>
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                    </p>
+                    <p>
+                        Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                </div>
+
+                <img src="pantai.jpeg" alt="Foto Utama" class="main-image">
+
+                <div class="article-content">
+                    <p>
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                    </p>
+                    <p>
+                        Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 ps-lg-5 offset-lg-1 sidebar">
+                
+                <h4 class="sidebar-title">Prestasi</h4>
+
+                <div class="d-flex mb-4 sidebar-item">
+                    <div class="img-placeholder-box">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                    <div class="ms-3">
+                        <h6>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h6>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry standard dummy.</p>
+                        <div class="sidebar-meta">
+                            <i class="bi bi-person-circle"></i> User &nbsp; 
+                            <i class="bi-calendar"></i> 31 nov, 2025 &nbsp; 
+                            <i class="bi bi-people-fill"></i> Mahasiswa &nbsp; 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex mb-4 sidebar-item">
+                    <div class="img-placeholder-box">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                    <div class="ms-3">
+                        <h6>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h6>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry standard dummy.</p>
+                        <div class="sidebar-meta">
+                            <i class="bi bi-person-circle"></i> User &nbsp; 
+                            <i class="bi-calendar"></i> 31 nov, 2025 &nbsp; 
+                            <i class="bi bi-people-fill"></i> Mahasiswa &nbsp; 
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="d-flex mb-4 sidebar-item">
+                    <div class="img-placeholder-box">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                    <div class="ms-3">
+                        <h6>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h6>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry standard dummy.</p>
+                        <div class="sidebar-meta">
+                            <i class="bi bi-person-circle"></i> User &nbsp; 
+                            <i class="bi-calendar"></i> 31 nov, 2025 &nbsp; 
+                            <i class="bi bi-people-fill"></i> Mahasiswa &nbsp; 
+                        </div>
+                    </div>
+                </div>
+
+                <h4 class="sidebar-title mt-5">Announcement</h4>
+
+                <div class="d-flex mb-4 sidebar-item">
+                    <div class="img-placeholder-box">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                    <div class="ms-3">
+                        <h6>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h6>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry standard dummy.</p>
+                        <div class="sidebar-meta">
+                            <i class="bi bi-person-circle"></i> User &nbsp; 
+                            <i class="bi-calendar"></i> 31 nov, 2025 &nbsp; 
+                            <i class="bi bi-people-fill"></i> Mahasiswa &nbsp; 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex mb-4 sidebar-item">
+                    <div class="img-placeholder-box">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                    <div class="ms-3">
+                        <h6>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h6>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry standard dummy.</p>
+                        <div class="sidebar-meta">
+                            <i class="bi bi-person-circle"></i> User &nbsp; 
+                            <i class="bi-calendar"></i> 31 nov, 2025 &nbsp; 
+                            <i class="bi bi-people-fill"></i> Mahasiswa &nbsp; 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex mb-4 sidebar-item">
+                    <div class="img-placeholder-box">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                    <div class="ms-3">
+                        <h6>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h6>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry standard dummy.</p>
+                        <div class="sidebar-meta">
+                            <i class="bi bi-person-circle"></i> User &nbsp; 
+                            <i class="bi-calendar"></i> 31 nov, 2025 &nbsp; 
+                            <i class="bi bi-people-fill"></i> Mahasiswa &nbsp; 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex mb-4 sidebar-item">
+                    <div class="img-placeholder-box">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                    <div class="ms-3">
+                        <h6>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h6>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry standard dummy.</p>
+                        <div class="sidebar-meta">
+                            <i class="bi bi-person-circle"></i> User &nbsp; 
+                            <i class="bi-calendar"></i> 31 nov, 2025 &nbsp; 
+                            <i class="bi bi-people-fill"></i> Mahasiswa &nbsp; 
+                        </div>
+                    </div>
+                </div>
+                
+                <h4 class="sidebar-title mt-5">Category</h4>
+
+                <ul class="list-unstyled mt-3 category-list">
+                    <li class="mb-2">
+                        <a href="#" class="d-flex align-items-center text-decoration-none text-dark">
+                            <i class="bi bi-play-fill me-2"></i> 
+                            <span>Galery</span>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="d-flex align-items-center text-decoration-none text-dark">
+                            <i class="bi bi-play-fill me-2"></i> 
+                            <span>Content Management System</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (window.innerWidth >= 992) {
+                const dropdowns = document.querySelectorAll(".navbar .dropdown");
+
+                dropdowns.forEach((dropdown) => {
+                    dropdown.addEventListener("mouseenter", function () {
+                        // Tutup semua dropdown lain
+                        dropdowns.forEach((d) => {
+                            if (d !== dropdown) {
+                                const menu = d.querySelector(".dropdown-menu");
+                                if (menu) menu.classList.remove("show");
+                            }
+                        });
+                    });
+                });
+
+                // Tutup dropdown saat mouse keluar dari navbar
+                document
+                    .querySelector(".navbar")
+                    .addEventListener("mouseleave", function () {
+                        dropdowns.forEach((d) => {
+                            const menu = d.querySelector(".dropdown-menu");
+                            if (menu) menu.classList.remove("show");
+                        });
+                    });
+            }
+        });
+    </script>
+</body>
+</html>

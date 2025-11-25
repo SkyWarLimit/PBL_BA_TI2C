@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Revisi Layout Laboratorium</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@200..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* --- Font (Opsional, tapi mirip gambar) --- */
+      /* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap'); */
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 180px; /* Offset untuk tabs + navbar fixed */
+      }
+
+      body {
+        font-family: "Nunito", sans-serif;
+        background-color: #ffffff;
+      }
+
+      /* --- 1. Navbar Kustom --- */
+      .navbar {
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        backface-visibility: hidden;
+        -webkit-font-smoothing: antialiased;
+
+        /* Buat ngatur tinggi bg putih di navbar */
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+      }
+
+      /* Placeholder yang mengambil ruang navbar */
+      .navbar-placeholder {
+        height: 0;
+        transition: height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      /* Saat navbar jadi fixed, placeholder ambil tingginya */
+      .navbar-placeholder.active {
+        height: 76px; /* Sesuaikan dengan tinggi navbar */
+      }
+
+      /* Navbar fixed dengan animasi */
+      .navbar.navbar-fixed {
+        position: fixed;
+        top: -100px; /* Mulai dari atas (tersembunyi) */
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 1030;
+      }
+
+      .navbar.navbar-fixed.navbar-visible {
+        top: 0; /* Turun ke posisi visible */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar-brand .brand-title {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: #212529;
+        line-height: 1.2;
+      }
+      .navbar-brand .brand-tagline {
+        font-size: 0.8rem;
+        color: #6c757d;
+      }
+      .navbar .nav-link {
+        font-weight: 500;
+        color: #212529;
+      }
+
+      /* --- 2. Hero Section Kustom (RESPONSIVE) --- */
+      .hero-section {
+        background-color: #eaeff5;
+        padding: 3rem 0;
+      }
+
+      @media (min-width: 768px) {
+        .hero-section {
+          padding: 4rem 0;
+        }
+      }
+
+      @media (min-width: 992px) {
+        .hero-section {
+          padding: 5rem 0;
+        }
+      }
+
+      .hero-content {
+        position: relative; /* Diperlukan untuk watermark */
+      }
+
+      .hero-watermark {
+        position: absolute;
+        top: -55px; /* Sesuaikan posisi */
+        left: 15px;
+        font-size: 7rem; /* Ukuran font super besar */
+        font-weight: 900;
+        color: #d8dde2; /* Warna sangat pudar */
+        z-index: 1; /* Di bawah teks */
+        user-select: none; /* Agar tidak bisa terseleksi */
+        line-height: 1;
+        opacity: 0.7;
+      }
+
+      @media (min-width: 576px) {
+        .hero-watermark {
+          font-size: 4rem;
+          top: -35px;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .hero-watermark {
+          font-size: 5rem;
+          top: -45px;
+        }
+      }
+
+      @media (min-width: 992px) {
+        .hero-watermark {
+          font-size: 7rem;
+          top: -55px;
+        }
+      }
+
+      .hero-content h1,
+      .hero-content p,
+      .hero-content .btn {
+        position: relative;
+        z-index: 2; /* Di atas watermark */
+      }
+
+      /* Responsive heading */
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      @media (min-width: 576px) {
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .hero-content h1 {
+          font-size: 3rem;
+        }
+      }
+
+      @media (min-width: 992px) {
+        .hero-content h1 {
+          font-size: 3.5rem;
+        }
+      }
+      /* Responsive paragraph */
+      .hero-content p {
+        font-size: 0.95rem;
+      }
+
+      @media (min-width: 768px) {
+        .hero-content p {
+          font-size: 1rem;
+        }
+      }
+
+      .hero-button {
+        border: 1px solid #212529;
+        background-color: #eaeff5;
+        font-weight: 500;
+        border-radius: 500rem;
+        padding: 0.6rem 1.25rem;
+        font-size: 0.9rem;
+        display: inline-block;
+        font-size: 0.8rem;
+      }
+
+      @media (min-width: 768px) {
+        .hero-button {
+          font-size: 0.8rem;
+        }
+      }
+
+      .hero-button:hover {
+        border: 1px solid #212529;
+        background-color: #d5e0ec;
+        text-decoration: none;
+      }
+
+      .hero-section .col-lg-5 {
+        padding: 0 1rem; /* Beri ruang kiri-kanan untuk mobile */
+      }
+
+      @media (min-width: 992px) {
+        .hero-section .col-lg-5 {
+          padding: 0 1.5rem; /* Ruang lebih untuk desktop */
+        }
+      }
+
+      /* Responsive image */
+      /* .hero-section img {
+        max-width: 100%;
+        height: auto;
+      } */
+
+      .hero-section img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto; /* Center gambar */
+      }
+
+      /* TAMBAHAN INI: Geser gambar ke kanan di mobile & tablet */
+      @media (max-width: 991px) {
+        .hero-section img {
+          margin-left: auto;
+          margin-right: auto; /* Ubah jadi auto biar center */
+          max-width: 95%;
+        }
+      }
+
+      /* Kalau mau lebih presisi untuk tablet aja */
+      @media (min-width: 768px) and (max-width: 991px) {
+        .hero-section img {
+          margin-left: auto;
+          margin-right: auto; /* Ubah jadi auto biar center */
+          max-width: 90%;
+        }
+      }
+
+      @media (max-width: 991px) {
+        .hero-section .row {
+          flex-direction: column-reverse;
+        }
+
+        .hero-section .col-lg-7 {
+          margin-bottom: 2rem;
+        }
+      }
+
+      /* --- 3. Tombol Tab Kustom --- */
+      /* --- Sticky Tabs --- */
+      .custom-tabs {
+        position: relative;
+        z-index: 1020;
+        background-color: #fff;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        backface-visibility: hidden;
+      }
+
+      /* Saat scroll melewati hero, jadi fixed */
+      .custom-tabs.is-fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Saat navbar visible, tabs turun kebawah navbar */
+      .custom-tabs.is-fixed.with-navbar {
+        top: 70px;
+      }
+
+      .custom-tabs .nav-link {
+        border: 1px solid #dee2e6;
+        border-top: none;
+        text-align: center;
+        padding: 1rem 1rem;
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: #6c757d;
+        border-radius: 0;
+        background-color: #f8f9fa;
+        margin: 0;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .custom-tabs .nav-link:hover {
+        background-color: #e9ecef;
+      }
+
+      /* Style untuk tab yang aktif */
+      .custom-tabs .nav-link.active {
+        background-color: #fff;
+        border-bottom-color: #fff;
+        color: #052c65;
+        font-weight: 600;
+      }
+
+      /* Spacing untuk section pertama */
+      #latest-section {
+        padding-top: 2rem;
+      }
+
+      /* .tab-content {
+        padding-top: 20px;
+        transition: padding-top 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      body:has(.custom-tabs.is-fixed) .tab-content {
+        padding-top: 110px;
+      }
+
+      body:has(.custom-tabs.is-fixed.with-navbar) .tab-content {
+        padding-top: 186px;
+      } */
+
+      /* --- 4. Section Berita --- */
+      .news-section {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+      .section-subtitle {
+        color: #6c757d;
+        font-size: 0.9rem;
+      }
+      .section-title {
+        color: #052c65; /* Warna biru tua */
+        font-weight: 700;
+      }
+      .card-meta {
+        font-size: 0.85rem;
+        color: #6c757d;
+      }
+      .card-meta span {
+        margin-right: 15px;
+        display: inline-flex;
+        align-items: center;
+      }
+      .card-meta i {
+        margin-right: 5px;
+        color: #000; /* Warna ikon */
+      }
+
+      /* --- EFEK SHADOW PADA GAMBAR (Permintaan Awal) --- */
+      .img-shadow {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease;
+      }
+      .card:hover .img-shadow {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      /* === DROPDOWN HOVER EFFECT === */
+      /* Untuk desktop (layar >= 992px), dropdown muncul saat hover */
+      @media (min-width: 992px) {
+        .navbar .dropdown:hover > .dropdown-menu {
+          display: block;
+          margin-top: 0;
+        }
+
+        /* Animasi smooth untuk dropdown */
+        .navbar .dropdown-menu {
+          margin-top: 0;
+          animation: fadeInDown 0.3s ease;
+        }
+
+        @keyframes fadeInDown {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img
+            src="logo.png.png"
+            alt="Logo"
+            width="50"
+            height="50"
+            class="me-2"
+          />
+          <div>
+            <span class="brand-title d-block"
+              >Laboratorium Business Analytics</span
+            >
+            <small class="brand-tagline"
+              >Transforming Data Into Decisions</small
+            >
+          </div>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Profil</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownPublikasi"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Publikasi
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownPublikasi"
+              >
+                <li><a class="dropdown-item" href="#">Publikasi 1</a></li>
+                <li><a class="dropdown-item" href="#">Publikasi 2</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownPeminjaman"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Peminjaman Lab
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownPeminjaman"
+              >
+                <li><a class="dropdown-item" href="#">Formulir</a></li>
+                <li><a class="dropdown-item" href="#">Jadwal Lab</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Kontak</a>
+            </li>
+          </ul>
+
+          <div class="d-flex align-items-center ms-lg-3 mt-3 mt-lg-0">
+            <a
+              href="#"
+              class="btn btn-outline-secondary me-2 px-4 py-2"
+              style="border-color: #dee2e6; color: #495057; font-weight: 500"
+            >
+              CMS
+            </a>
+            <a
+              href="#"
+              class="btn btn-primary px-4 py-2"
+              style="background-color: #0d6efd; border-color: #0d6efd"
+            >
+              Login
+            </a>
+          </div>
+          </div>
+      </div>
+    </nav>
+
+    <div class="navbar-placeholder"></div>
+
+    <main>
+      <section class="hero-section">
+        <div class="container-xl">
+          <div class="row align-items-center g-5">
+            <div class="col-lg-5">
+              <img
+                src="https://picsum.photos/800/800?random=1"
+                class="img-fluid rounded"
+                alt="Laboratory Business Analytics"
+              />
+            </div>
+            <div class="col-lg-7">
+              <div class="hero-content">
+                <div class="hero-watermark fst-italic">NEWS</div>
+                <h1
+                  class="display-4 fst-italic mb-3"
+                  style="color: #263356; font-weight: 900"
+                >
+                  The Laboratory Business Analytics
+                </h1>
+                <p class="display-12 text-muted mb-4">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur.
+                </p>
+                <a href="#" class="btn hero-button">
+                  Layanan
+                  <i class="bi bi-arrow-right-short"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="container-fluid px-0">
+        <ul class="nav nav-tabs nav-fill custom-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" href="#latest-section"> News Latest </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#prestasi-section"> Prestasi </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#announcement-section"> Announcement </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="container-xl">
+        <div id="latest-section" class="news-section">
+          <p class="section-subtitle">Lorem Ipsum is simply dummy text</p>
+          <h2 class="section-title mb-4">Latest News Lab</h2>
+
+          <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <img
+                  src="https://picsum.photos/800/600?random=1"
+                  class="card-img-top img-shadow"
+                  alt="News Image 1"
+                />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">Lab News In Polinema</h5>
+                  <div class="card-meta d-flex flex-wrap my-2">
+                    <span><i class="bi bi-person-circle"></i>User</span>
+                    <span
+                      ><i class="bi bi-calendar-event"></i> 31 Nov, 2025</span
+                    >
+                    <span><i class="bi bi-person-badge"></i> Mhs Polinema</span>
+                  </div>
+                  <p class="card-text text-muted">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam...
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <img
+                  src="https://picsum.photos/800/600?random=2"
+                  class="card-img-top img-shadow"
+                  alt="News Image 2"
+                />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">Lab News In Polinema</h5>
+                  <div class="card-meta d-flex flex-wrap my-2">
+                    <span><i class="bi bi-person-circle"></i>User</span>
+                    <span
+                      ><i class="bi bi-calendar-event"></i> 31 Nov,2025</span
+                    >
+                    <span><i class="bi bi-person-badge"></i> Mhs Polinema</span>
+                  </div>
+                  <p class="card-text text-muted">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam...
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <img
+                  src="https://picsum.photos/800/600?random=3"
+                  class="card-img-top img-shadow"
+                  alt="News Image 3"
+                />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">Lab News In Polinema</h5>
+                  <div class="card-meta d-flex flex-wrap my-2">
+                    <span><i class="bi bi-person-circle"></i>User</span>
+                    <span
+                      ><i class="bi bi-calendar-event"></i> 31 Nov, 2025</span
+                    >
+                    <span><i class="bi bi-person-badge"></i> Mhs Polinema</span>
+                  </div>
+                  <p class="card-text text-muted">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam...
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-4 mt-1">
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <img
+                  src="https://picsum.photos/800/600?random=4"
+                  class="card-img-top img-shadow"
+                  alt="News Image 4"
+                />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">Lab News In Polinema</h5>
+                  <div class="card-meta d-flex flex-wrap my-2">
+                    <span><i class="bi bi-person-circle"></i>User</span>
+                    <span
+                      ><i class="bi bi-calendar-event"></i> 31 Nov, 2025</span
+                    >
+                    <span><i class="bi bi-person-badge"></i> Mhs Polinema</span>
+                  </div>
+                  <p class="card-text text-muted">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam...
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <img
+                  src="https://picsum.photos/800/600?random=5"
+                  class="card-img-top img-shadow"
+                  alt="News Image 5"
+                />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">Lab News In Polinema</h5>
+                  <div class="card-meta d-flex flex-wrap my-2">
+                    <span><i class="bi bi-person-circle"></i>User</span>
+                    <span
+                      ><i class="bi bi-calendar-event"></i> 31 Nov, 2025</span
+                    >
+                    <span><i class="bi bi-person-badge"></i> Mhs Polinema</span>
+                  </div>
+                  <p class="card-text text-muted">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam...
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-1 shadow-sm">
+                <img
+                  src="https://picsum.photos/800/600?random=6"
+                  class="card-img-top img-shadow"
+                  alt="News Image 6"
+                />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">Lab News In Polinema</h5>
+                  <div class="card-meta d-flex flex-wrap my-2">
+                    <span><i class="bi bi-person-circle"></i>User</span>
+                    <span
+                      ><i class="bi bi-calendar-event"></i> 31 Nov, 2025</span
+                    >
+                    <span><i class="bi bi-person-badge"></i> Mhs Polinema</span>
+                  </div>
+                  <p class="card-text text-muted">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam...
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="prestasi-section" class="news-section">
+          <p class="section-subtitle">Lorem Ipsum is simply dummy text</p>
+          <h2 class="section-title mb-4">Prestasi</h2>
+
+          <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <img
+                  src="https://picsum.photos/800/600?random=7"
+                  class="card-img-top img-shadow"
+                  alt="News Image 1"
+                />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">Lab News In Polinema</h5>
+                  <div class="card-meta d-flex flex-wrap my-2">
+                    <span><i class="bi bi-person-circle"></i>User</span>
+                    <span
+                      ><i class="bi bi-calendar-event"></i> 31 Nov, 2025</span
+                    >
+                    <span><i class="bi bi-person-badge"></i> Mhs Polinema</span>
+                  </div>
+                  <p class="card-text text-muted">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam...
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <img
+                  src="https://picsum.photos/800/600?random=8"
+                  class="card-img-top img-shadow"
+                  alt="News Image 2"
+                />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">Lab News In Polinema</h5>
+                  <div class="card-meta d-flex flex-wrap my-2">
+                    <span><i class="bi bi-person-circle"></i>User</span>
+                    <span
+                      ><i class="bi bi-calendar-event"></i> 31 Nov,2025</span
+                    >
+                    <span><i class="bi bi-person-badge"></i> Mhs Polinema</span>
+                  </div>
+                  <p class="card-text text-muted">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam...
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <img
+                  src="https://picsum.photos/800/600?random=9"
+                  class="card-img-top img-shadow"
+                  alt="News Image 3"
+                />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">Lab News In Polinema</h5>
+                  <div class="card-meta d-flex flex-wrap my-2">
+                    <span><i class="bi bi-person-circle"></i>User</span>
+                    <span
+                      ><i class="bi bi-calendar-event"></i> 31 Nov, 2025</span
+                    >
+                    <span><i class="bi bi-person-badge"></i> Mhs Polinema</span>
+                  </div>
+                  <p class="card-text text-muted">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam...
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-4 mt-1">
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <img
+                  src="https://picsum.photos/800/600?random=10"
+                  class="card-img-top img-shadow"
+                  alt="News Image 4"
+                />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">Lab News In Polinema</h5>
+                  <div class="card-meta d-flex flex-wrap my-2">
+                    <span><i class="bi bi-person-circle"></i>User</span>
+                    <span
+                      ><i class="bi bi-calendar-event"></i> 31 Nov, 2025</span
+                    >
+                    <span><i class="bi bi-person-badge"></i> Mhs Polinema</span>
+                  </div>
+                  <p class="card-text text-muted">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam...
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <img
+                  src="https://picsum.photos/800/600?random=11"
+                  class="card-img-top img-shadow"
+                  alt="News Image 5"
+                />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">Lab News In Polinema</h5>
+                  <div class="card-meta d-flex flex-wrap my-2">
+                    <span><i class="bi bi-person-circle"></i>User</span>
+                    <span
+                      ><i class="bi bi-calendar-event"></i> 31 Nov, 2025</span
+                    >
+                    <span><i class="bi bi-person-badge"></i> Mhs Polinema</span>
+                  </div>
+                  <p class="card-text text-muted">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam...
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-1 shadow-sm">
+                <img
+                  src="https://picsum.photos/800/600?random=12"
+                  class="card-img-top img-shadow"
+                  alt="News Image 6"
+                />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">Lab News In Polinema</h5>
+                  <div class="card-meta d-flex flex-wrap my-2">
+                    <span><i class="bi bi-person-circle"></i>User</span>
+                    <span
+                      ><i class="bi bi-calendar-event"></i> 31 Nov, 2025</span
+                    >
+                    <span><i class="bi bi-person-badge"></i> Mhs Polinema</span>
+                  </div>
+                  <p class="card-text text-muted">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam...
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="announcement-section" class="news-section">
+          <p class="section-subtitle">Lorem Ipsum is simply dummy text</p>
+          <h2 class="section-title mb-4">Announcement</h2>
+
+          <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <img
+                  src="https://picsum.photos/800/600?random=13"
+                  class="card-img-top img-shadow"
+                  alt="News Image 1"
+                />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">Lab News In Polinema</h5>
+                  <div class="card-meta d-flex flex-wrap my-2">
+                    <span><i class="bi bi-person-circle"></i>User</span>
+                    <span
+                      ><i class="bi bi-calendar-event"></i> 31 Nov, 2025</span
+                    >
+                    <span><i class="bi bi-person-badge"></i> Mhs Polinema</span>
+                  </div>
+                  <p class="card-text text-muted">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam...
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <img
+                  src="https://picsum.photos/800/600?random=14"
+                  class="card-img-top img-shadow"
+                  alt="News Image 2"
+                />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">Lab News In Polinema</h5>
+                  <div class="card-meta d-flex flex-wrap my-2">
+                    <span><i class="bi bi-person-circle"></i>User</span>
+                    <span
+                      ><i class="bi bi-calendar-event"></i> 31 Nov,2025</span
+                    >
+                    <span><i class="bi bi-person-badge"></i> Mhs Polinema</span>
+                  </div>
+                  <p class="card-text text-muted">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam...
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <img
+                  src="https://picsum.photos/800/600?random=15"
+                  class="card-img-top img-shadow"
+                  alt="News Image 3"
+                />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">Lab News In Polinema</h5>
+                  <div class="card-meta d-flex flex-wrap my-2">
+                    <span><i class="bi bi-person-circle"></i>User</span>
+                    <span
+                      ><i class="bi bi-calendar-event"></i> 31 Nov, 2025</span
+                    >
+                    <span><i class="bi bi-person-badge"></i> Mhs Polinema</span>
+                  </div>
+                  <p class="card-text text-muted">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam...
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-4 mt-1">
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <img
+                  src="https://picsum.photos/800/600?random=16"
+                  class="card-img-top img-shadow"
+                  alt="News Image 4"
+                />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">Lab News In Polinema</h5>
+                  <div class="card-meta d-flex flex-wrap my-2">
+                    <span><i class="bi bi-person-circle"></i>User</span>
+                    <span
+                      ><i class="bi bi-calendar-event"></i> 31 Nov, 2025</span
+                    >
+                    <span><i class="bi bi-person-badge"></i> Mhs Polinema</span>
+                  </div>
+                  <p class="card-text text-muted">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam...
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <img
+                  src="https://picsum.photos/800/600?random=17"
+                  class="card-img-top img-shadow"
+                  alt="News Image 5"
+                />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">Lab News In Polinema</h5>
+                  <div class="card-meta d-flex flex-wrap my-2">
+                    <span><i class="bi bi-person-circle"></i>User</span>
+                    <span
+                      ><i class="bi bi-calendar-event"></i> 31 Nov, 2025</span
+                    >
+                    <span><i class="bi bi-person-badge"></i> Mhs Polinema</span>
+                  </div>
+                  <p class="card-text text-muted">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam...
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 border-1 shadow-sm">
+                <img
+                  src="https://picsum.photos/800/600?random=18"
+                  class="card-img-top img-shadow"
+                  alt="News Image 6"
+                />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">Lab News In Polinema</h5>
+                  <div class="card-meta d-flex flex-wrap my-2">
+                    <span><i class="bi bi-person-circle"></i>User</span>
+                    <span
+                      ><i class="bi bi-calendar-event"></i> 31 Nov, 2025</span
+                    >
+                    <span><i class="bi bi-person-badge"></i> Mhs Polinema</span>
+                  </div>
+                  <p class="card-text text-muted">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam...
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+    </main>
+
+    <footer class="bg-light text-center text-muted p-4 mt-5 border-top">
+      <div class="container">
+        <p class="mb-0">
+          &copy; 2025 Laboratorium Business Analytics. All Rights Reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      let lastScrollY = window.scrollY;
+      let ticking = false;
+
+      // Ambil tinggi navbar sekali saja
+      const navbar = document.querySelector(".navbar");
+      const navbarPlaceholder = document.querySelector(".navbar-placeholder");
+      const tabs = document.querySelector(".custom-tabs");
+      const hero = document.querySelector(".hero-section");
+      const navbarHeight = navbar.offsetHeight;
+
+      // Auto-close other dropdowns when hovering a new one
+      document.addEventListener("DOMContentLoaded", function () {
+        if (window.innerWidth >= 992) {
+          const dropdowns = document.querySelectorAll(".navbar .dropdown");
+
+          dropdowns.forEach((dropdown) => {
+            dropdown.addEventListener("mouseenter", function () {
+              // Tutup semua dropdown lain
+              dropdowns.forEach((d) => {
+                if (d !== dropdown) {
+                  const menu = d.querySelector(".dropdown-menu");
+                  if (menu) menu.classList.remove("show");
+                }
+              });
+            });
+          });
+
+          // Tutup dropdown saat mouse keluar dari navbar
+          document
+            .querySelector(".navbar")
+            .addEventListener("mouseleave", function () {
+              dropdowns.forEach((d) => {
+                const menu = d.querySelector(".dropdown-menu");
+                if (menu) menu.classList.remove("show");
+              });
+            });
+        }
+      });
+
+      window.addEventListener("scroll", function () {
+        if (!ticking) {
+          window.requestAnimationFrame(function () {
+            const currentScrollY = window.scrollY;
+            const heroBottom = hero.offsetTop + hero.offsetHeight;
+
+            const isScrollingUp = currentScrollY < lastScrollY;
+            const pastHero = currentScrollY > heroBottom;
+
+            // === NAVBAR LOGIC ===
+            if (pastHero) {
+              // Sudah melewati hero section
+              if (!navbar.classList.contains("navbar-fixed")) {
+                navbar.classList.add("navbar-fixed");
+                navbarPlaceholder.classList.add("active");
+              }
+
+              if (isScrollingUp) {
+                // Scroll ke atas: tampilkan navbar
+                navbar.classList.add("navbar-visible");
+                tabs.classList.add("with-navbar");
+              } else {
+                // Scroll ke bawah: sembunyikan navbar
+                navbar.classList.remove("navbar-visible");
+                tabs.classList.remove("with-navbar");
+              }
+            } else {
+              // Masih di area hero: kembalikan ke normal
+              navbar.classList.remove("navbar-fixed", "navbar-visible");
+              navbarPlaceholder.classList.remove("active");
+              tabs.classList.remove("with-navbar");
+            }
+
+            // === TABS LOGIC ===
+            if (pastHero) {
+              tabs.classList.add("is-fixed");
+            } else {
+              tabs.classList.remove("is-fixed");
+            }
+
+            lastScrollY = currentScrollY;
+            ticking = false;
+          });
+
+          ticking = true;
+        }
+      });
+
+      // === FUNGSI UPDATE ACTIVE LINK ===
+      function updateActiveLink() {
+        const sections = document.querySelectorAll('section[id$="-section"]');
+        const navLinks = document.querySelectorAll(".custom-tabs .nav-link");
+
+        let currentSection = "";
+        const scrollPos = window.scrollY + 200; // Offset untuk deteksi
+
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+
+          if (
+            scrollPos >= sectionTop &&
+            scrollPos < sectionTop + sectionHeight
+          ) {
+            currentSection = section.getAttribute("id");
+          }
+        });
+
+        // Update active class
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${currentSection}`) {
+            link.classList.add("active");
+          }
+        });
+      }
+
+      // Update active saat halaman load
+      window.addEventListener("load", updateActiveLink);
+    </script>
+  </body>
+</html>
