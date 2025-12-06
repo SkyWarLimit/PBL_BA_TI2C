@@ -549,26 +549,38 @@ body {
   }
 
   /* Mobile Menu Styles */
-  .nav-menu {
-    position: fixed;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background-color: #ffffff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    flex-direction: column;
-    align-items: stretch;
-    padding: 0;
-    margin: 0;
-    gap: 0;
-    height: auto;
-    max-height: calc(100vh - 70px);
-    overflow-y: auto;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    z-index: 1001;
-  }
+ /* Mobile Menu Styles */
+.nav-menu {
+  /* Ubah dari fixed ke absolute jika Anda ingin menu bergerak bersama konten */
+  /* Namun, untuk tampilan overlay seperti gambar, fixed lebih baik */
+  position: fixed; 
+  top: 70px;
+  /* Atur agar menu menjorok ke kanan, tidak menutupi seluruh lebar */
+  right: 0;
+  left: auto; /* Memastikan dia tidak terikat di kiri saat menggunakan 'right' */
+  width: 80%; /* Lebar menu (misal 80% dari viewport) */
+  max-width: 300px; /* Batasi lebar maksimal agar tidak terlalu besar di tablet */
+  background-color: rgba(255, 255, 255, 0.95); /* Tambahkan transparansi ringan */
+  backdrop-filter: blur(5px); /* Efek blur untuk latar belakang (membutuhkan dukungan browser) */
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1); /* Shadow di sebelah kiri */
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0;
+  margin: 0;
+  gap: 0;
+  height: 100vh; /* Menu menutupi seluruh tinggi viewport */
+  max-height: none; /* Hapus max-height agar bisa menutupi 100vh */
+  overflow-y: auto; /* Biarkan menu bisa di-scroll jika isinya panjang */
+  
+  /* Geser menu ke kanan (keluar dari layar) */
+  transform: translateX(100%); 
+  transition: transform 0.3s ease;
+  z-index: 1001;
+}
 
+.nav-menu.active {
+  transform: translateX(0); /* Geser menu ke kiri (masuk ke layar) */
+}
   .nav-menu.active {
     transform: translateX(0);
   }
@@ -675,4 +687,47 @@ body {
   .lab-name-container {
     display: none;
   }
+}
+/* Overlay untuk mode mobile saat menu aktif */
+.sticky-navbar::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0); /* Awalnya transparan */
+  z-index: 1000; /* Di bawah nav-menu (1001) */
+  pointer-events: none; /* Agar klik bisa tembus */
+  transition: background-color 0.3s ease;
+}
+
+.nav-menu.active ~ .desktop-login-btn {
+    /* Untuk mengatasi kasus jika login button di luar nav-menu */
+    /* Mungkin perlu penyesuaian tergantung struktur HTML/CSS lain */
+}
+
+@media (max-width: 768px) {
+    /* Lanjutkan mobile menu styles yang sudah dimodifikasi di langkah 1 */
+    /* ... (Kode .nav-menu yang sudah dimodifikasi di langkah 1) ... */
+
+    /* Aktifkan overlay saat menu aktif */
+    .nav-menu.active:before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5); /* Gelapkan latar belakang */
+        z-index: 1000;
+        pointer-events: auto; /* Aktifkan klik di backdrop */
+        transition: background-color 0.3s ease;
+    }
+    
+    /* Perbaikan kecil untuk elemen di mobile menu */
+    .nav-link {
+      /* Tambahkan border agar menu item lebih jelas di latar belakang transparan */
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08); 
+    }
 }

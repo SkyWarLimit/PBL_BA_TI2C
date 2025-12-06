@@ -69,7 +69,7 @@
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="infoPeminjaman.html">Informasi Laboratorium</a></li>
                     <li><a class="dropdown-item" href="tableBooking.html">Table Peminjaman</a></li>
-                    <li><a class="dropdown-item" href="booking.html">Pemesanan Lab</a></li>
+                    <li><a class="dropdown-item" href="formBooking.html">Pemesanan Lab</a></li>
                 </ul>
             </li>
             <li class="nav-item">
@@ -229,6 +229,49 @@
                 }
             });
         });
+
+        // Mobile Menu Toggle
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (mobileMenuToggle && navMenu) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    mobileMenuToggle.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    // HAPUS BARIS INI: document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+                });
+                
+                // Close menu when clicking on a link
+                const navLinks = navMenu.querySelectorAll('.nav-link:not(.dropdown-toggle)');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileMenuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        // HAPUS BARIS INI: document.body.style.overflow = '';
+                    });
+                });
+            }
+
+            // ... (Kode toggleDropdown) ...
+
+            // Close dropdown and mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                // Close dropdown jika klik di luar dropdown
+                // ... (Kode penutupan dropdown) ...
+                
+                // Close mobile menu jika klik di luar (hanya jika menu aktif)
+                if (mobileMenuToggle && navMenu && navMenu.classList.contains('active')) {
+                    // Cek apakah klik BUKAN di dalam nav-menu dan BUKAN di toggle button
+                    const isClickInsideNav = navMenu.contains(event.target);
+                    const isClickOnToggle = mobileMenuToggle.contains(event.target);
+                    
+                    if (!isClickInsideNav && !isClickOnToggle) {
+                        mobileMenuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        // HAPUS BARIS INI: document.body.style.overflow = '';
+                    }
+                }
+            });
     </script>
 </body>
 

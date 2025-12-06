@@ -1103,6 +1103,24 @@ body {
         }
 
         @media (max-width: 768px) {
+          .news-input-container .row {
+              flex-direction: column;
+          }
+          
+          .col-lg-8.order-lg-1 {
+              order: 2;
+          }
+          
+          .col-lg-4.order-lg-2 {
+              order: 1;
+              margin-bottom: 30px;
+          }
+          
+          .rules-container {
+              margin-top: 0;
+              margin-bottom: 20px;
+          }
+          
           .news-input-title {
               font-size: 28px;
           }

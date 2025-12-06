@@ -26,7 +26,29 @@
             </div>
         </div>
 
-        <ul class="nav-menu">
+        <!-- Hamburger Menu Button (Mobile Only) -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Overlay for mobile menu -->
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+        
+        <ul class="nav-menu" id="navMenu">
+            <!-- Mobile Logo Container with Close Button -->
+            <li class="nav-item mobile-logo-item">
+                <div class="mobile-logo-container">
+                    <div class="logo">
+                        <img src="../assets/img/logo.png" alt="Laboratorium Business Analytics Logo">
+                    </div>
+                    <div class="lab-name">Laboratorium Business Analytics</div>
+                    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="../index.html">Beranda</a>
             </li>
@@ -52,15 +74,20 @@
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="infoPeminjaman.html">Informasi Laboratorium</a></li>
                     <li><a class="dropdown-item" href="tableBooking.html">Table Peminjaman</a></li>
-                    <li><a class="dropdown-item" href="booking.html">Pemesanan Lab</a></li>
+                    <li><a class="dropdown-item" href="formBooking.html">Pemesanan Lab</a></li>
                 </ul>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="kontak.html">Kontak</a>
             </li>
+            <!-- Login Button in Mobile Menu -->
+            <li class="nav-item mobile-login-item">
+                <button class="login-btn mobile-login-btn" onclick="window.location.href='../admin/login.html'">Login</button>
+            </li>
         </ul>
-
-        <button class="login-btn" onclick="window.location.href='../admin/login.html'">Login</button>
+        
+        <!-- Login Button for Desktop -->
+        <button class="login-btn desktop-login-btn" onclick="window.location.href='../admin/login.html'">Login</button>
     </nav>
 
     <section class="hero-section">
@@ -94,9 +121,8 @@
     </section>
 
     <nav class="section-navbar" id="sectionNavbar">
-    <div class="section-nav-rectangle">
-        <div class="section-nav-container">
-            <div class="section-nav-container-wrapper">
+        <div class="section-nav-rectangle">
+            <div class="section-nav-container">
                 <ul class="section-nav-menu">
                     <li class="section-nav-item">
                         <a href="#visi-misi" class="section-nav-link active">
@@ -130,9 +156,8 @@
                     </li>
                 </ul>
             </div>
-            </div>
-    </div>
-</nav>
+        </div>
+    </nav>
 
     <div class="container py-2">
 
@@ -243,6 +268,7 @@
 
         <div class="py-4"></div>
 
+        <!-- Struktur Organisasi Section -->
         <div class="org-structure py-5" id="struktur-organisasi">
             <h2 class="section-title mb-3">Struktur Organisasi</h2>
             <p class="section-description mb-5">
@@ -259,6 +285,7 @@
                                 <span>Kepala Laboratory</span>
                             </div>
                             <ul>
+                                <!-- Baris pertama: Sekretaris dan Bendahara -->
                                 <li class="support-row">
                                     <div class="org-node child-node">
                                         <span>Sekretaris</span>
@@ -268,6 +295,7 @@
                                     </div>
                                 </li>
 
+                                <!-- Baris kedua: Semua Koordinator -->
                                 <li class="coordinator-row">
                                     <div class="coordinator-container">
                                         <div class="org-node child-node">
@@ -297,10 +325,109 @@
             </div>
         </div>
 
+
       <div class="researcher-section py-4" id="anggota-laboratory">
             <h2 class="section-title mb-5">Anggota Laboratory</h2>
+            <p class="section-description mb-4">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
             
-            <div class="member-carousel-container">
+            <!-- Desktop Table View (Hidden on Mobile) -->
+            <div class="member-table-container desktop-only">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-responsive shadow-sm rounded-3">
+                            <table class="table table-hover custom-table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="ps-4">Researcher Name</th>
+                                        <th scope="col">Role / Position</th>
+                                        <th scope="col" class="text-end pe-4">Profile Links</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="ps-4">
+                                            <div class="d-flex align-items-center">
+                                                <img src="https://ui-avatars.com/api/?name=Nama+Kepala+Lab&background=eef2f7&color=1f3a60&bold=true"
+                                                    alt="User" class="table-avatar me-3">
+                                                <div>
+                                                    <h6 class="mb-0 fw-bold text-dark">Nama Kepala Lab</h6>
+                                                    <small class="text-muted">NIDN: 198001012005011001</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-primary fw-semibold">Kepala Laboratory</td>
+                                        <td class="align-middle text-end pe-4">
+                                            <a href="#" class="btn-link-custom">Scholar</a>
+                                            <a href="#" class="btn-link-custom">Sinta</a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="ps-4">
+                                            <div class="d-flex align-items-center">
+                                                <img src="https://ui-avatars.com/api/?name=Nama+Anggota+1&background=eef2f7&color=345482&bold=true"
+                                                    alt="User" class="table-avatar me-3">
+                                                <div>
+                                                    <h6 class="mb-0 fw-bold text-dark">Nama Anggota 1</h6>
+                                                    <small class="text-muted">NIDN: 198505052010021002</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-primary fw-semibold">Staf Koordinator</td>
+                                        <td class="align-middle text-end pe-4">
+                                            <a href="#" class="btn-link-custom">Scholar</a>
+                                            <a href="#" class="btn-link-custom">Sinta</a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="ps-4">
+                                            <div class="d-flex align-items-center">
+                                                <img src="https://ui-avatars.com/api/?name=Nama+Anggota+2&background=eef2f7&color=1f3a60&bold=true"
+                                                    alt="User" class="table-avatar me-3">
+                                                <div>
+                                                    <h6 class="mb-0 fw-bold text-dark">Nama Anggota 2</h6>
+                                                    <small class="text-muted">NIDN: 197803152008011003</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-primary fw-semibold">Peneliti Utama</td>
+                                        <td class="align-middle text-end pe-4">
+                                            <a href="#" class="btn-link-custom">Scholar</a>
+                                            <a href="#" class="btn-link-custom">Sinta</a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="ps-4">
+                                            <div class="d-flex align-items-center">
+                                                <img src="https://ui-avatars.com/api/?name=Nama+Anggota+3&background=eef2f7&color=345482&bold=true"
+                                                    alt="User" class="table-avatar me-3">
+                                                <div>
+                                                    <h6 class="mb-0 fw-bold text-dark">Nama Anggota 3</h6>
+                                                    <small class="text-muted">NIDN: 199009092015031004</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-primary fw-semibold">Asisten Lab</td>
+                                        <td class="align-middle text-end pe-4">
+                                            <a href="#" class="btn-link-custom">Scholar</a>
+                                            <a href="#" class="btn-link-custom">Sinta</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Carousel View (Hidden on Desktop) -->
+            <div class="member-carousel-container mobile-only">
                 <div class="member-carousel-track-wrapper">
                     <div class="member-carousel-track" id="memberTrack">
                         
@@ -451,6 +578,14 @@
         <div class="py-5"></div>
 
         <section class="profile-carousel-section" id="research-focus">
+            <div class="container">
+                <h2 class="section-title mb-3">Research Focus</h2>
+                <p class="section-description mb-5">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat.
+                </p>
+            </div>
         <div class="custom-container-relative">
             <div class="gray-backdrop-box">
                 <img id="backdrop-image" src="./assets/imgAdek/Kotak.jpg" alt="Research Project Image"
@@ -1152,6 +1287,331 @@ const memberTrack = document.getElementById('memberTrack'); // BARU
     if (memberTrack) {
         new MemberCarousel(); // BARU
     }
+
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const navMenu = document.getElementById('navMenu');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    
+    function openMobileMenu() {
+        if (mobileMenuToggle) mobileMenuToggle.classList.add('active');
+        if (navMenu) navMenu.classList.add('active');
+        if (mobileMenuOverlay) mobileMenuOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Force all nav items to be visible when menu is active
+        if (navMenu) {
+            const allNavItems = navMenu.querySelectorAll('.nav-item');
+            allNavItems.forEach(item => {
+                item.style.display = 'block';
+                item.style.visibility = 'visible';
+                item.style.opacity = '1';
+            });
+        }
+    }
+    
+    function closeMobileMenu() {
+        if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
+        if (navMenu) navMenu.classList.remove('active');
+        if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    if (mobileMenuToggle && navMenu) {
+        // Klik hamburger menu → sidebar terbuka dari kanan
+        mobileMenuToggle.addEventListener('click', function() {
+            if (navMenu.classList.contains('active')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
+        
+        // Klik X → sidebar tertutup
+        if (mobileMenuClose) {
+            mobileMenuClose.addEventListener('click', function() {
+                closeMobileMenu();
+            });
+        }
+        
+        // Klik overlay → sidebar tertutup
+        if (mobileMenuOverlay) {
+            mobileMenuOverlay.addEventListener('click', function() {
+                closeMobileMenu();
+            });
+        }
+        
+        // Klik item dengan dropdown → submenu toggle
+        const dropdownToggles = navMenu.querySelectorAll('.dropdown-toggle');
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const dropdownItem = this.closest('.nav-item.dropdown');
+                const dropdownMenu = dropdownItem.querySelector('.dropdown-menu');
+                const icon = this.querySelector('.dropdown-icon');
+                
+                // Close other dropdowns
+                navMenu.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    if (menu !== dropdownMenu) {
+                        menu.classList.remove('show');
+                    }
+                });
+                
+                // Toggle current dropdown
+                dropdownMenu.classList.toggle('show');
+                
+                // Rotate icon
+                if (icon) {
+                    if (dropdownMenu.classList.contains('show')) {
+                        icon.style.transform = 'rotate(180deg)';
+                    } else {
+                        icon.style.transform = 'rotate(0deg)';
+                    }
+                }
+            });
+        });
+        
+        // Close menu when clicking on a regular link (not dropdown)
+        const navLinks = navMenu.querySelectorAll('.nav-link:not(.dropdown-toggle)');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                closeMobileMenu();
+            });
+        });
+        
+        // Close menu when clicking on dropdown items
+        const dropdownItems = navMenu.querySelectorAll('.dropdown-item');
+        dropdownItems.forEach(item => {
+            item.addEventListener('click', function() {
+                closeMobileMenu();
+            });
+        });
+    }
+
+    // Initialize semua behavior ketika DOM ready
+    document.addEventListener('DOMContentLoaded', function () {
+        // Section Navigation
+        const sectionLinks = document.querySelectorAll('.section-nav-link');
+
+        sectionLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Hapus kelas active dari semua link
+                sectionLinks.forEach(l => l.classList.remove('active'));
+
+                // Tambah kelas active ke link yang diklik
+                this.classList.add('active');
+
+                // Dapatkan target section
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+
+                if (targetSection) {
+                    // Hitung offset dengan mempertimbangkan tinggi navbar
+                    const navbarHeight = document.querySelector('.sticky-navbar').offsetHeight;
+                    const sectionNavHeight = document.querySelector('.section-navbar')?.offsetHeight || 0;
+                    const offsetTop = targetSection.offsetTop - navbarHeight - sectionNavHeight;
+
+                    // Scroll ke section
+                    if ('scrollBehavior' in document.documentElement.style) {
+                        window.scrollTo({
+                            top: Math.max(0, offsetTop),
+                            behavior: 'smooth'
+                        });
+                    } else {
+                        // Fallback untuk browser lama
+                        window.scrollTo(0, Math.max(0, offsetTop));
+                    }
+                }
+            });
+        });
+
+        // Update active section saat scroll
+        window.addEventListener('scroll', function () {
+            const sections = document.querySelectorAll('section[id], div[id]');
+            const scrollPos = window.scrollY + 200; // Offset untuk menentukan section aktif
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                    sectionLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+
+        // Scroll Behavior untuk Navbar
+        class NavbarScrollBehavior {
+            constructor() {
+                this.mainNavbar = document.getElementById('mainNavbar') || document.querySelector('.sticky-navbar');
+                this.sectionNavbar = document.getElementById('sectionNavbar') || document.querySelector('.section-navbar');
+                this.lastScrollY = window.scrollY;
+                this.scrollThreshold = 100; // Scroll berapa pixel sebelum navbar utama hilang
+                this.isMainNavHidden = false;
+
+                if (this.mainNavbar) {
+                    this.init();
+                }
+            }
+
+            init() {
+                window.addEventListener('scroll', () => {
+                    this.handleScroll();
+                });
+
+                // Initial check
+                this.handleScroll();
+            }
+
+            handleScroll() {
+                if (!this.mainNavbar) return;
+                
+                const currentScrollY = window.scrollY;
+                const scrollDirection = currentScrollY > this.lastScrollY ? 'down' : 'up';
+
+                // Jika scroll ke bawah melebihi threshold, sembunyikan navbar utama
+                if (scrollDirection === 'down' && currentScrollY > this.scrollThreshold && !this.isMainNavHidden) {
+                    this.hideMainNavbar();
+                }
+                // Jika scroll ke atas, tampilkan navbar utama
+                else if (scrollDirection === 'up' && this.isMainNavHidden) {
+                    this.showMainNavbar();
+                }
+                // Jika di paling atas, pastikan navbar utama visible
+                else if (currentScrollY <= this.scrollThreshold && this.isMainNavHidden) {
+                    this.showMainNavbar();
+                }
+
+                this.lastScrollY = currentScrollY;
+            }
+
+            hideMainNavbar() {
+                if (this.mainNavbar) this.mainNavbar.classList.add('hidden');
+                if (this.sectionNavbar) this.sectionNavbar.classList.add('main-sticky');
+                document.body.classList.add('nav-main-hidden');
+                this.isMainNavHidden = true;
+            }
+
+            showMainNavbar() {
+                if (this.mainNavbar) this.mainNavbar.classList.remove('hidden');
+                if (this.sectionNavbar) this.sectionNavbar.classList.remove('main-sticky');
+                document.body.classList.remove('nav-main-hidden');
+                this.isMainNavHidden = false;
+            }
+        }
+
+        // Compact navbar saat scroll
+        class CompactNavbar {
+            constructor() {
+                this.mainNavbar = document.querySelector('.sticky-navbar');
+                this.compactThreshold = 50;
+
+                if (this.mainNavbar) {
+                    this.init();
+                }
+            }
+
+            init() {
+                window.addEventListener('scroll', () => {
+                    this.toggleCompact();
+                });
+            }
+
+            toggleCompact() {
+                if (this.mainNavbar && window.scrollY > this.compactThreshold) {
+                    this.mainNavbar.classList.add('compact');
+                } else if (this.mainNavbar) {
+                    this.mainNavbar.classList.remove('compact');
+                }
+            }
+        }
+
+        // Initialize scroll behavior
+        new NavbarScrollBehavior();
+        new CompactNavbar();
+    });
+
+    // Toggle Dropdown for Mobile only (Desktop uses hover)
+    function toggleDropdown(event, element) {
+        if (window.innerWidth > 768) {
+            return; // Skip click handler di desktop
+        }
+        
+        event.preventDefault();
+        event.stopPropagation();
+        
+        const dropdown = element.nextElementSibling;
+        const allDropdowns = document.querySelectorAll('.dropdown-menu');
+        const allIcons = document.querySelectorAll('.dropdown-icon');
+        
+        // Close all other dropdowns
+        allDropdowns.forEach(dd => {
+            if (dd !== dropdown) {
+                dd.classList.remove('show');
+            }
+        });
+        
+        // Reset all icons
+        allIcons.forEach(icon => {
+            if (icon !== element.querySelector('.dropdown-icon')) {
+                icon.style.transform = 'rotate(0deg)';
+            }
+        });
+        
+        // Toggle current dropdown
+        if (dropdown) {
+            dropdown.classList.toggle('show');
+            
+            // Rotate chevron icon
+            const icon = element.querySelector('.dropdown-icon');
+            if (icon) {
+                icon.style.transform = dropdown.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+            }
+        }
+    }
+    
+    // Close dropdown and mobile menu when clicking outside (single event listener)
+    document.addEventListener('click', function(event) {
+        // Close dropdown jika klik di luar dropdown
+        if (!event.target.closest('.nav-item.dropdown')) {
+            const allDropdowns = document.querySelectorAll('.dropdown-menu');
+            const allIcons = document.querySelectorAll('.dropdown-icon');
+            
+            allDropdowns.forEach(dd => {
+                dd.classList.remove('show');
+            });
+            
+            allIcons.forEach(icon => {
+                icon.style.transform = 'rotate(0deg)';
+            });
+        }
+        
+        // Close mobile menu jika klik di luar (hanya jika menu aktif)
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        if (mobileMenuToggle && navMenu && navMenu.classList.contains('active')) {
+            const isClickInsideNav = navMenu.contains(event.target);
+            const isClickOnToggle = mobileMenuToggle.contains(event.target);
+            
+            if (!isClickInsideNav && !isClickOnToggle) {
+                mobileMenuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+    });
     </script>
 </body>
 

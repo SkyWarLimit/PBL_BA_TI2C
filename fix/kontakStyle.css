@@ -1136,7 +1136,14 @@ textarea.form-control {
 
 @media (max-width: 768px) {
   .contact-hero-bg {
-    width: 90%;
+    width: 100%;
+    left: 0;
+    transform: none;
+    border-radius: 0;
+  }
+
+  .contact-hero {
+    padding: 40px 20px;
   }
 
   .contact-hero h1 {
