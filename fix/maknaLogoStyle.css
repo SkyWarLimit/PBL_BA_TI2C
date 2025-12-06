@@ -1,0 +1,886 @@
+/* ========================================= */
+/* NAVBARRRRRRR */
+/* ========================================= */
+
+/* CSS Kustom untuk Sticky Navbar */
+* {
+  font-family: "Nunito", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding-top: 80px;
+}
+
+.sticky-navbar {
+  width: 100%;
+  height: 80px;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.lab-name-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.lab-name {
+  font-weight: 700;
+  font-size: 18px;
+  color: #333;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.lab-tagline {
+  font-weight: 400;
+  font-size: 12px;
+  color: #666;
+  white-space: nowrap;
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: flex-start;
+  gap: 40px;
+  flex-grow: 1;
+  justify-content: center;
+  height: 100%;
+  flex-wrap: wrap;
+}
+
+.nav-item {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item.dropdown {
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.nav-link {
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px 0;
+  transition: color 0.3s;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  font-size: 16px;
+  height: 100%;
+}
+
+.nav-link:hover {
+  color: #2b95fd;
+}
+
+.nav-link.active {
+  color: #2b95fd;
+}
+
+/* Garis horizontal di bawah menu aktif */
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #2b95fd;
+  border-radius: 2px 2px 0 0;
+}
+
+/* Dropdown styling */
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Icon panah bawah untuk dropdown */
+.dropdown-toggle::after {
+  display: none;
+}
+
+.dropdown-icon {
+  font-size: 12px;
+  margin-left: 5px;
+  color: inherit;
+  transition: transform 0.3s ease;
+}
+
+/* Custom Dropdown Menu */
+.dropdown-menu {
+  width: 280px;
+  background: #ffffff !important;
+  border: 1px solid #e0e0e0 !important;
+  border-radius: 12px;
+  padding: 8px 0;
+  margin: 8px 0 0 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: none;
+  opacity: 0;
+  max-height: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  top: auto;
+  left: 0;
+  z-index: 1;
+  list-style: none;
+}
+
+/* Desktop Dropdown Positioning */
+@media (min-width: 769px) {
+  /* Hide mobile logo item on desktop */
+  .mobile-logo-item {
+    display: none !important;
+  }
+  
+  .nav-item.dropdown {
+    position: relative;
+    flex-direction: row; /* Override column untuk desktop */
+    align-items: center; /* Override flex-start untuk desktop */
+  }
+  
+  /* Dropdown muncul saat hover di desktop */
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block !important;
+    opacity: 1 !important;
+    max-height: 500px !important;
+    transform: translateY(0) !important;
+  }
+  
+  /* Rotate icon saat hover */
+  .nav-item.dropdown:hover .dropdown-icon {
+    transform: rotate(180deg);
+  }
+  
+  /* Dropdown positioning - aligned with nav-link text (left-aligned) */
+  .nav-item.dropdown .dropdown-menu {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    margin-top: 0 !important;
+    padding-top: 8px !important;
+    margin-left: 0 !important;
+    z-index: 1001 !important;
+    min-width: 280px;
+  }
+  
+  /* Create invisible bridge area to maintain hover state */
+  .nav-item.dropdown::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: transparent;
+    pointer-events: none;
+  }
+  
+  /* Align dropdown to right for last few items to prevent overflow */
+  .nav-item.dropdown:last-child .dropdown-menu,
+  .nav-item.dropdown:nth-last-child(2) .dropdown-menu {
+    left: auto !important;
+    right: 0 !important;
+    margin-left: 0 !important;
+  }
+  
+  /* Ensure dropdown appears below parent and aligned */
+  .nav-item.dropdown .nav-link {
+    position: relative;
+  }
+  
+  /* Keep dropdown visible when hovering over dropdown menu or bridge area */
+  .nav-item.dropdown:hover .dropdown-menu,
+  .nav-item.dropdown .dropdown-menu:hover {
+    display: block !important;
+    opacity: 1 !important;
+    max-height: 500px !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+  }
+}
+
+/* Dropdown muncul saat click */
+.nav-item.dropdown .dropdown-menu.show {
+  display: block;
+  opacity: 1;
+  max-height: 500px;
+  transform: translateY(0);
+  margin-top: 0;
+  padding-top: 8px;
+}
+
+/* Hapus hover behavior - hanya click yang bekerja (hanya untuk mobile) */
+@media (max-width: 768px) {
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: none;
+  }
+}
+
+/* Ensure nav-link in dropdown stays aligned */
+.nav-item.dropdown .nav-link {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  width: auto;
+}
+
+.dropdown-item {
+  padding: 14px 20px;
+  font-weight: 500;
+  color: #333;
+  border-bottom: 1px solid #f0f0f0;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  position: relative;
+  margin: 0 8px;
+  border-radius: 8px;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(43, 149, 253, 0.08);
+  color: #2b95fd;
+  transform: translateX(4px);
+  border-bottom-color: transparent;
+}
+
+.dropdown-item:active {
+  background-color: rgba(43, 149, 253, 0.12);
+  transform: translateX(2px);
+}
+
+/* Add subtle left border on hover */
+.dropdown-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 0;
+  background-color: #2b95fd;
+  border-radius: 0 3px 3px 0;
+  transition: height 0.2s ease;
+}
+
+.dropdown-item:hover::before {
+  height: 60%;
+}
+
+.login-btn {
+  background-color: #2b95fd;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background-color 0.3s;
+  flex-shrink: 0;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background-color: #1a7fd8;
+}
+
+/* Desktop Login Button */
+.desktop-login-btn {
+  display: block;
+}
+
+/* Mobile Login Button - Hidden by default */
+.mobile-login-item {
+  display: none;
+}
+
+.mobile-login-btn {
+  width: 100%;
+  text-align: center;
+  margin: 10px 0;
+}
+
+/* Konten dummy untuk demonstrasi scroll */
+.content {
+  height: 2000px;
+  padding: 50px;
+  background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+}
+
+/* Responsif untuk tablet dan mobile */
+@media (max-width: 1200px) {
+  .sticky-navbar {
+    padding: 0 30px;
+  }
+
+  .nav-menu {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 992px) {
+  .sticky-navbar {
+    padding: 0 20px;
+  }
+
+  .nav-menu {
+    gap: 20px;
+  }
+
+  .lab-name {
+    font-size: 16px;
+  }
+
+  .lab-tagline {
+    font-size: 11px;
+  }
+
+  .nav-link {
+    font-size: 14px;
+  }
+
+  .dropdown-menu {
+    width: 220px; /* Diperlebar dari 180px menjadi 220px */
+    margin-top: 0;
+  }
+
+  /* Untuk mobile, tetap menggunakan klik */
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: none;
+  }
+
+  .nav-item.dropdown .dropdown-menu.show {
+    display: block;
+    opacity: 1;
+    transform: none;
+    margin-top: 0;
+  }
+}
+
+/* Hamburger Menu Button */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1002;
+  width: 30px;
+  height: 24px;
+  justify-content: space-between;
+  position: relative;
+}
+
+.mobile-menu-toggle span {
+  width: 100%;
+  height: 3px;
+  background-color: #333;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+  display: block;
+  position: absolute;
+}
+
+.mobile-menu-toggle span:nth-child(1) {
+  top: 0;
+}
+
+.mobile-menu-toggle span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.mobile-menu-toggle span:nth-child(3) {
+  bottom: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+  transform: translateY(-50%) scale(0);
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  bottom: auto;
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    padding-top: 70px;
+  }
+
+  .sticky-navbar {
+    height: 70px;
+    padding: 10px 20px;
+    flex-wrap: nowrap;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    width: 100%;
+  }
+  
+  .nav-menu {
+    align-items: flex-start;
+  }
+  
+  .nav-item.dropdown {
+    display: block !important;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+
+  .lab-name-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .lab-name {
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .lab-tagline {
+    font-size: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Show hamburger menu */
+  .mobile-menu-toggle {
+    display: flex;
+    order: 3;
+  }
+
+  /* Hide desktop login button on mobile */
+  .desktop-login-btn {
+    display: none;
+  }
+
+
+  /* Mobile Menu Styles */
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 0 !important;
+    margin: 0 !important;
+    gap: 0;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1001;
+    display: flex;
+  }
+
+  .nav-menu.active {
+    transform: translateX(0);
+  }
+
+  /* Logo in Mobile Menu */
+  .mobile-logo-container {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    margin: 0 !important;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+  }
+  
+  /* Ensure no gap at top of mobile menu */
+  .nav-item.mobile-logo-item:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  .nav-item.mobile-logo-item .mobile-logo-container {
+    margin-top: 0 !important;
+    padding-top: 15px !important;
+  }
+
+  .mobile-logo-container .logo {
+    width: 45px;
+    height: 45px;
+    margin-right: 12px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .mobile-logo-container .logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .mobile-logo-container .lab-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .nav-item {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .nav-item:last-child {
+    border-bottom: none;
+  }
+
+  .nav-item.mobile-logo-item {
+    border-bottom: 1px solid #e0e0e0;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .nav-link {
+    width: 100%;
+    padding: 10px 20px;
+    height: auto;
+    justify-content: space-between;
+    font-size: 15px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-link.active::after {
+    display: none;
+  }
+
+  .nav-link.active {
+    background-color: rgba(43, 149, 253, 0.1);
+    color: #2b95fd;
+  }
+  
+  .nav-item.dropdown {
+    display: block !important;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-item.dropdown .nav-link {
+    width: 100%;
+    margin: 0;
+    padding: 10px 20px;
+    min-height: 0 !important;
+  }
+  
+  .nav-item.dropdown .nav-link.dropdown-toggle:active,
+  .nav-item.dropdown .nav-link.dropdown-toggle:focus {
+    min-height: 0 !important;
+  }
+
+  /* Dropdown Menu for Mobile - Clean and smooth */
+  .nav-item.dropdown .dropdown-menu {
+    position: static !important;
+    width: 100% !important;
+    display: none !important;
+    opacity: 0 !important;
+    transform: translateY(-5px) !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background-color: #f8f9fa !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-top: 1px solid #e9ecef !important;
+    border-bottom: 1px solid #e9ecef !important;
+    list-style: none !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    visibility: hidden !important;
+    transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+
+  .nav-item.dropdown .dropdown-menu.show {
+    display: block !important;
+    padding: 8px 0 !important;
+    max-height: 500px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    overflow: visible !important;
+  }
+  
+  /* Ensure dropdown items are visible when parent is shown */
+  .nav-item.dropdown .dropdown-menu.show li {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .nav-item.dropdown .dropdown-menu .dropdown-item {
+    padding: 12px 20px 12px 40px !important;
+    border-bottom: 1px solid #e9ecef !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    min-height: 44px !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    font-size: 15px !important;
+  }
+
+  .nav-item.dropdown .dropdown-menu .dropdown-item:first-child {
+    margin-top: 0 !important;
+  }
+
+  .nav-item.dropdown .dropdown-menu .dropdown-item:last-child {
+    border-bottom: none !important;
+    margin-bottom: 0 !important;
+  }
+
+  .nav-item.dropdown .dropdown-menu .dropdown-item:hover {
+    background-color: rgba(43, 149, 253, 0.1) !important;
+    transform: translateX(6px) !important;
+    color: #2b95fd !important;
+    padding-left: 44px !important;
+  }
+
+  .lab-name-container {
+    display: flex;
+  }
+
+  /* Show mobile logo in menu */
+  .mobile-logo-item {
+    display: block !important;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* ========================================= */
+  /* MOBILE LOGIN BUTTON - SEPARATE SECTION */
+  /* ========================================= */
+  
+  /* Mobile Login Button Container - Posisi di paling bawah */
+  .mobile-login-item {
+    display: block;
+    width: 100%;
+    border-top: 1px solid #e0e0e0;
+    margin: 0;
+    margin-top: auto;
+    padding: 0;
+    flex-shrink: 0;
+    order: 999;
+  }
+
+  /* Mobile Login Button Styling */
+  .mobile-login-item .mobile-login-btn {
+    width: calc(100% - 40px);
+    margin: 12px 20px;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 6px;
+    background-color: #2b95fd;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    display: block;
+  }
+
+  .mobile-login-item .mobile-login-btn:hover {
+    background-color: #1a7fd8;
+  }
+  
+  .mobile-login-item .mobile-login-btn:active {
+    background-color: #1565a8;
+  }
+}
+
+/* ========================================= */
+/* KONTEN MAKNA LOGO */
+/* ========================================= */
+
+.content-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.breadcrumb {
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.breadcrumb a {
+  color: #2b95fd;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb .active {
+  color: #666;
+}
+
+.breadcrumb .separator {
+  margin: 0 8px;
+  color: #999;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.content-text {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 40px;
+  text-align: justify;
+}
+
+.logo-center {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.logo-center img {
+  max-width: 300px;
+  height: auto;
+}
+
+/* Responsif untuk konten makna logo */
+@media (max-width: 768px) {
+  .title {
+    font-size: 28px;
+  }
+
+  .content-text {
+    font-size: 15px;
+  }
+}

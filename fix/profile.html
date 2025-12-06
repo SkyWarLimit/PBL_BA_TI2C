@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratory Business Analytics</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="profile.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,700;1,800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Sticky Navigation Bar -->
+    <nav class="sticky-navbar">
+        <div class="logo-container">
+            <div class="logo">
+                <img src="./assets/img/logo.png" alt="Laboratorium Business Analytics Logo">
+            </div>
+            <div class="lab-name-container">
+                <div class="lab-name">Laboratorium Business Analytics</div>
+                <div class="lab-tagline">Transforming Data into Decisions</div>
+            </div>
+        </div>
+
+        <!-- Hamburger Menu Button (Mobile Only) -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-menu" id="navMenu">
+            <!-- Mobile Logo Container -->
+            <li class="nav-item mobile-logo-item">
+                <div class="mobile-logo-container">
+                    <div class="logo">
+                        <img src="./assets/img/logo.png" alt="Laboratorium Business Analytics Logo">
+                    </div>
+                    <div class="lab-name">Laboratorium Business Analytics</div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="beranda.html">Beranda</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="profile.html">Profil</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" onclick="toggleDropdown(event, this)">
+                    Publikasi
+                    <i class="fas fa-chevron-down dropdown-icon"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="berita.html">Berita</a></li>
+                    <li><a class="dropdown-item" href="galeri.html">Gallery</a></li>
+                    <li><a class="dropdown-item" href="newsInputService.html">News Input Service</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" onclick="toggleDropdown(event, this)">
+                    Peminjaman Lab
+                    <i class="fas fa-chevron-down dropdown-icon"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="infoPeminjaman.html">Informasi Laboratorium</a></li>
+                    <li><a class="dropdown-item" href="tableBooking.html">Table Peminjaman</a></li>
+                    <li><a class="dropdown-item" href="booking.html">Pemesanan Lab</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="kontak.html">Kontak</a>
+            </li>
+            <!-- Login Button in Mobile Menu -->
+            <li class="nav-item mobile-login-item">
+                <button class="login-btn mobile-login-btn">Login</button>
+            </li>
+        </ul>
+        
+        <!-- Login Button for Desktop -->
+        <button class="login-btn desktop-login-btn">Login</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-rectangle">
+            <!-- Background rectangle dengan opacity -->
+        </div>
+        <div class="hero-container">
+            <div class="hero-inner-rectangle">
+                <!-- Inner rectangle placeholder -->
+            </div>
+            <div class="hero-text-content">
+                <div class="about-overlay">
+                    <span class="about-text">About</span>
+                </div>
+                <div class="title-content">
+                    <h1 class="hero-main-title">
+                        <span class="title-line">The Laboratory</span>
+                        <span class="title-line business-analytics">Business Analytics</span>
+                    </h1>
+                    <p class="hero-detailed-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+                        anim id est laborum.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sticky Section Navigation -->
+    <nav class="section-navbar" id="sectionNavbar">
+        <div class="section-nav-rectangle">
+            <!-- Mobile Toggle Button -->
+            <button class="section-nav-toggle" id="sectionNavToggle" aria-label="Toggle section menu">
+                <span>Menu</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="section-nav-container">
+                <ul class="section-nav-menu" id="sectionNavMenu">
+                    <li class="section-nav-item">
+                        <a class="section-nav-link" href="#visi-misi">
+                            <span class="nav-text">Visi & Misi</span>
+                        </a>
+                    </li>
+                    <li class="section-nav-item">
+                        <a class="section-nav-link" href="#roadmap">
+                            <span class="nav-text">Road Map</span>
+                        </a>
+                    </li>
+                    <li class="section-nav-item">
+                        <a class="section-nav-link" href="#struktur-organisasi">
+                            <span class="nav-text">Struktur Organisasi</span>
+                        </a>
+                    </li>
+                    <li class="section-nav-item">
+                        <a class="section-nav-link" href="#anggota-laboratory">
+                            <span class="nav-text">Anggota Laboratory</span>
+                        </a>
+                    </li>
+                    <li class="section-nav-item">
+                        <a class="section-nav-link" href="#makna-logo-maskot">
+                            <span class="nav-text">Makna Logo & Maskot</span>
+                        </a>
+                    </li>
+                    <li class="section-nav-item">
+                        <a class="section-nav-link" href="#research-focus">
+                            <span class="nav-text">Research Focus</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-2">
+
+        <!-- Visi & Misi Section -->
+        <div class="row mb-5" id="visi-misi">
+            <div class="col-12">
+                <h2 class="section-title mb-3">Visi & Misi</h2>
+                <p class="section-description mb-5">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat.
+                </p>
+                <div class="custom-card mb-4">
+                    <h3 class="card-title">Visi</h3>
+                    <p class="card-text">Menjadi laboratorium unggul rujukan nasional sebagai inkubator solusi cerdas
+                        berbasis data.</p>
+                </div>
+                <div class="custom-card">
+                    <h3 class="card-title">Misi</h3>
+                    <ol class="mission-list">
+                        <li>Mengembangkan riset terapan</li>
+                        <li>Mengintegrasikan berbagai disiplin ilmu</li>
+                        <li>Membangun kemitraan strategis dengan industri</li>
+                        <li>Mengembangkan talenta (dosen dan mahasiswa)</li>
+                        <li>Menjalankan tata kelola laboratorium yang profesional, etis, dan berkelanjutan</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="py-5"></div>
+
+        <!-- Roadmap Section -->
+       <section id="roadmap" class="py-5 bg-light">
+        <div class="container-fluid px-0">
+            <div class="container mb-5 text-center">
+                <h2 class="fw-bold">Roadmap Penelitian</h2>
+                <div class="bg-primary mx-auto" style="width: 60px; height: 4px;"></div>
+            </div>
+            
+            <div class="roadmap-container">
+                <div class="roadmap-track">
+                    <div class="custom-premium-card">
+                        <div class="label-top">2023 - 2024</div>
+                        <h3>Foundation</h3>
+                        <p>Pembangunan infrastruktur data.</p>
+                    </div>
+                    <div class="custom-premium-card">
+                        <div class="label-top">2024 - 2025</div>
+                        <h3>Predictive</h3>
+                        <p>Model machine learning.</p>
+                    </div>
+                    <div class="custom-premium-card">
+                        <div class="label-top">2025 - 2026</div>
+                        <h3>AI Integration</h3>
+                        <p>Implementasi AI dashboard.</p>
+                    </div>
+                    <div class="custom-premium-card">
+                        <div class="label-top">2026 - 2027</div>
+                        <h3>Smart Eco</h3>
+                        <p>Integrasi IoT penuh.</p>
+                    </div>
+
+                    <div class="custom-premium-card">
+                        <div class="label-top">2023 - 2024</div>
+                        <h3>Foundation</h3>
+                        <p>Pembangunan infrastruktur data.</p>
+                    </div>
+                    <div class="custom-premium-card">
+                        <div class="label-top">2024 - 2025</div>
+                        <h3>Predictive</h3>
+                        <p>Model machine learning.</p>
+                    </div>
+                    <div class="custom-premium-card">
+                        <div class="label-top">2025 - 2026</div>
+                        <h3>AI Integration</h3>
+                        <p>Implementasi AI dashboard.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <div class="py-4"></div>
+
+        <!-- Struktur Organisasi Section -->
+      <section id="struktur-organisasi" class="py-5 bg-light-subtle">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold section-title">Struktur Organisasi</h2>
+                <div class="bg-primary mx-auto" style="width: 60px; height: 4px;"></div>
+            </div>
+            
+            <div class="tf-tree">
+                <ul>
+                    <li>
+                        <div class="tf-node-content">
+                            <img src="https://via.placeholder.com/100" class="node-img" alt="KaLab">
+                            <span class="node-name">Dr. Nama Dosen</span>
+                            <span class="node-role">Kepala Laboratorium</span>
+                        </div>
+                        
+                        <ul>
+                            <li>
+                                <div class="tf-node-content">
+                                    <span class="node-name">Budi Santoso</span>
+                                    <span class="node-role">Koord. Data Mining</span>
+                                </div>
+                            </li>
+                            
+                            <li>
+                                <div class="tf-node-content">
+                                    <span class="node-name">Siti Aminah</span>
+                                    <span class="node-role">Koord. Business Intel</span>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="tf-node-content">
+                                            <span class="node-name">Tim Teknis A</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="tf-node-content">
+                                            <span class="node-name">Tim Teknis B</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <div class="tf-node-content">
+                                    <span class="node-name">Rudi Hartono</span>
+                                    <span class="node-role">Koord. Publikasi</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+        <!-- Anggota Laboratory -->
+       <section id="anggota-laboratory" class="py-5 bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold section-title">Tim Peneliti</h2>
+                <div class="bg-primary mx-auto" style="width: 60px; height: 4px;"></div>
+                <p class="text-muted mt-2">Para talenta di balik riset kami.</p>
+            </div>
+
+            <div class="members-grid">
+                
+                <div class="member-card">
+                    <div class="member-img-container">
+                        <img src="https://via.placeholder.com/300" alt="Member">
+                    </div>
+                    <div class="p-3">
+                        <h5 class="fw-bold mb-1">Ahmad Ihsan</h5>
+                        <small class="text-muted">Lead Data Scientist</small>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-img-container">
+                        <img src="https://via.placeholder.com/300" alt="Member">
+                    </div>
+                    <div class="p-3">
+                        <h5 class="fw-bold mb-1">Putri Ayu</h5>
+                        <small class="text-muted">AI Researcher</small>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-img-container">
+                        <img src="https://via.placeholder.com/300" alt="Member">
+                    </div>
+                    <div class="p-3">
+                        <h5 class="fw-bold mb-1">Dimas Anggara</h5>
+                        <small class="text-muted">System Analyst</small>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-img-container">
+                        <img src="https://via.placeholder.com/300" alt="Member">
+                    </div>
+                    <div class="p-3">
+                        <h5 class="fw-bold mb-1">Sarah Wijaya</h5>
+                        <small class="text-muted">IoT Specialist</small>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pagination-container mt-4">
+                <div class="page-btn active">1</div>
+                <div class="page-btn">2</div>
+                <div class="page-btn">3</div>
+                <div class="page-btn"><i class="fas fa-chevron-right"></i></div>
+            </div>
+
+        </div>
+    </section>
+
+        <div class="py-5"></div>
+
+        <!-- Makna Logo & Maskot Section -->
+<div class="row mb-5" id="makna-logo-maskot">
+    <div class="col-12">
+        <h2 class="section-title mb-3">Makna Logo & Maskot</h2>
+        <p class="section-description mb-5">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+            et dolore magna aliqua. Ut enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+    </div>
+
+    <div class="row align-items-start">
+        <!-- Makna Logo Section - Kiri -->
+        <div class="col-lg-6 mb-5 mb-lg-0">
+            <div class="logo-section">
+                <!-- Kotak Logo dipindah ke bawah sub judul -->
+                <div class="symbol-preview-large mb-4">
+                    <div class="symbol-placeholder-large logo-placeholder">
+                        <span class="symbol-text-large">LOGO</span>
+                    </div>
+                </div>
+                <h3 class="symbol-title mb-4">Makna Logo</h3>
+                <div class="symbol-content mb-4">
+                    <p class="symbol-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                        eu fugiat nulla pariatur.
+                    </p>
+                    <p class="symbol-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                </div>
+                <div class="text-start">
+                    <a href="maknaLogo.html" class="btn-read-more">Read More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Makna Maskot Section - Kanan -->
+        <div class="col-lg-6">
+            <div class="mascot-section">
+                <h3 class="symbol-title mb-4">Makna Maskot</h3>
+                <div class="symbol-content mb-4">
+                    <p class="symbol-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim
+                        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                        eu fugiat nulla pariatur.
+                    </p>
+                    <p class="symbol-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                </div>
+                <div class="text-start mb-4">
+                    <a href="maknaMaskot.html" class="btn-read-more">Read More</a>
+                </div>
+                <!-- Kotak Maskot dipindah ke bawah tombol Read More -->
+                <div class="symbol-preview-large">
+                    <div class="symbol-placeholder-large mascot-placeholder">
+                        <span class="symbol-text-large">MASKOT</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- research focus -->
+       <section id="research-focus" class="py-5 bg-white">
+        <div class="container-xl">
+            <div class="row align-items-end mb-4">
+                <div class="col-md-8">
+                    <p class="text-uppercase fw-bold text-primary mb-1">Our Expertise</p>
+                    <h2 class="fw-bold display-6 text-dark">Research Focus</h2>
+                    <div class="bg-primary mt-2" style="width: 60px; height: 4px;"></div>
+                </div>
+                <div class="col-md-4 d-flex justify-content-end gap-2">
+                    <button id="btnPrevRF" class="btn btn-outline-dark rounded-circle" style="width: 50px; height: 50px;"><i class="fas fa-arrow-left"></i></button>
+                    <button id="btnNextRF" class="btn btn-outline-dark rounded-circle" style="width: 50px; height: 50px;"><i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            
+            <div id="scrollRF" class="manual-scroll-container">
+                <div class="custom-premium-card">
+                    <h3>Big Data</h3>
+                    <p>Analisis data skala besar.</p>
+                </div>
+                <div class="custom-premium-card">
+                    <h3>Artificial Intelligence</h3>
+                    <p>Implementasi Deep Learning.</p>
+                </div>
+                <div class="custom-premium-card">
+                    <h3>Business Intelligence</h3>
+                    <p>Visualisasi data interaktif.</p>
+                </div>
+                <div class="custom-premium-card">
+                    <h3>IoT Analytics</h3>
+                    <p>Analisa sensor cerdas.</p>
+                </div>
+                <div class="custom-premium-card">
+                    <h3>Social Mining</h3>
+                    <p>Analisis sentimen sosial.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        class RoadmapCarousel {
+            constructor() {
+                this.cards = document.querySelectorAll('.roadmap-card');
+                this.indicators = document.querySelectorAll('.indicator');
+                this.track = document.querySelector('.roadmap-track');
+                this.prevBtn = document.getElementById('roadmapPrevBtn');
+                this.nextBtn = document.getElementById('roadmapNextBtn');
+                this.currentIndex = 0;
+                this.totalCards = this.cards.length;
+                this.autoSlideInterval = null;
+                this.slideDuration = 3000; // 3 detik
+                this.isDesktop = window.innerWidth >= 768; // Desktop jika lebar >= 768px
+
+                this.init();
+            }
+
+            init() {
+                // Set initial positions
+                this.updateCardPositions();
+
+                // Start auto slide hanya di desktop
+                if (this.isDesktop) {
+                    this.startAutoSlide();
+                }
+
+                // Add click events to indicators
+                this.indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => {
+                        this.goToSlide(index);
+                    });
+                });
+
+                // Add click events to arrow buttons
+                if (this.prevBtn) {
+                    this.prevBtn.addEventListener('click', () => {
+                        this.prevSlide();
+                        if (this.isDesktop) {
+                            this.restartAutoSlide();
+                        }
+                    });
+                }
+
+                if (this.nextBtn) {
+                    this.nextBtn.addEventListener('click', () => {
+                        this.nextSlide();
+                        if (this.isDesktop) {
+                            this.restartAutoSlide();
+                        }
+                    });
+                }
+
+                // Pause on hover hanya di desktop
+                if (this.isDesktop && this.track) {
+                    this.track.addEventListener('mouseenter', () => {
+                        this.stopAutoSlide();
+                    });
+
+                    this.track.addEventListener('mouseleave', () => {
+                        this.startAutoSlide();
+                    });
+                }
+            }
+
+            updateCardPositions() {
+                this.cards.forEach((card, index) => {
+                    card.classList.remove('active', 'prev', 'next');
+
+                    if (index === this.currentIndex) {
+                        card.classList.add('active');
+                    } else if (index === (this.currentIndex + 1) % this.totalCards) {
+                        card.classList.add('next');
+                    } else if (index === (this.currentIndex - 1 + this.totalCards) % this.totalCards) {
+                        card.classList.add('prev');
+                    }
+                });
+
+                // Update indicators
+                this.indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === this.currentIndex);
+                });
+            }
+
+            nextSlide() {
+                this.currentIndex = (this.currentIndex + 1) % this.totalCards;
+                this.updateCardPositions();
+            }
+
+            prevSlide() {
+                this.currentIndex = (this.currentIndex - 1 + this.totalCards) % this.totalCards;
+                this.updateCardPositions();
+            }
+
+            goToSlide(index) {
+                this.currentIndex = index;
+                this.updateCardPositions();
+                if (this.isDesktop) {
+                    this.restartAutoSlide();
+                }
+            }
+
+            startAutoSlide() {
+                // Update isDesktop berdasarkan ukuran layar saat ini
+                this.isDesktop = window.innerWidth >= 768;
+                
+                // JANGAN JALANKAN AUTO SLIDE DI MOBILE
+                if (!this.isDesktop || window.innerWidth < 768) {
+                    this.stopAutoSlide();
+                    return;
+                }
+                this.stopAutoSlide();
+                this.autoSlideInterval = setInterval(() => {
+                    if (window.innerWidth < 768) {
+                        this.isDesktop = false;
+                        this.stopAutoSlide();
+                        return;
+                    }
+                    this.nextSlide();
+                }, this.slideDuration);
+            }
+
+            stopAutoSlide() {
+                if (this.autoSlideInterval) {
+                    clearInterval(this.autoSlideInterval);
+                    this.autoSlideInterval = null;
+                }
+            }
+
+            restartAutoSlide() {
+                // JANGAN JALANKAN AUTO SLIDE DI MOBILE
+                if (!this.isDesktop || window.innerWidth < 768) {
+                    this.stopAutoSlide();
+                    return;
+                }
+                this.stopAutoSlide();
+                this.startAutoSlide();
+            }
+        }
+
+        // Initialize carousel when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const carousel = new RoadmapCarousel();
+            
+            // Handle window resize untuk toggle auto slide
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    const currentIsDesktop = window.innerWidth >= 768;
+                    
+                    // Update isDesktop property
+                    carousel.isDesktop = currentIsDesktop;
+                    
+                    if (currentIsDesktop) {
+                        // Desktop - start auto slide jika belum berjalan
+                        if (!carousel.autoSlideInterval) {
+                            carousel.startAutoSlide();
+                        }
+                    } else {
+                        // Mobile - STOP AUTO SLIDE
+                        carousel.stopAutoSlide();
+                    }
+                }, 250);
+            });
+        });
+
+        // Section Navigation Functionality
+        // Section Navigation Functionality - IMPROVED VERSION
+        // Section Navigation Functionality - FIXED SCROLL VERSION
+        class SectionNavigation {
+            constructor() {
+                this.sectionNavbar = document.getElementById('sectionNavbar');
+                this.sectionLinks = document.querySelectorAll('.section-nav-link');
+                this.sections = [];
+                this.navbarHeight = document.querySelector('.sticky-navbar').offsetHeight;
+                this.sectionNavbarHeight = this.sectionNavbar ? this.sectionNavbar.offsetHeight : 0;
+                this.currentActive = null;
+
+                this.init();
+            }
+
+            init() {
+                // Collect all sections with IDs that are targeted by navigation
+                const targetIds = ['visi-misi', 'roadmap', 'struktur-organisasi', 'anggota-laboratory', 'makna-logo-maskot', 'research-focus'];
+
+                targetIds.forEach(id => {
+                    const section = document.getElementById(id);
+                    if (section) {
+                        this.sections.push(section);
+                    }
+                });
+
+                // Add click event to section links with PROPER scroll
+                this.sectionLinks.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const targetId = link.getAttribute('href').substring(1);
+                        this.scrollToSection(targetId);
+
+                        // Update active state immediately
+                        this.sectionLinks.forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                    });
+                });
+
+                let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            if (!scrollTimeout) {
+                scrollTimeout = setTimeout(() => {
+                    this.updateActiveSection();
+                    scrollTimeout = null;
+                }, 10);
+            }
+        });
+
+                // Initial update
+                this.updateActiveSection();
+            }
+
+            scrollToSection(sectionId) {
+                const targetSection = document.getElementById(sectionId);
+
+                if (targetSection) {
+                    // Calculate offset - DIPERBAIKI untuk scroll yang tepat
+                    const offsetTop = targetSection.offsetTop - this.navbarHeight - this.sectionNavbarHeight - 10;
+
+                    console.log('Scrolling to:', sectionId, 'Offset:', offsetTop); // Debug log
+
+                    // Use smooth scroll if supported
+                    if ('scrollBehavior' in document.documentElement.style) {
+                        window.scrollTo({
+                            top: Math.max(0, offsetTop), // Pastikan tidak negatif
+                            behavior: 'smooth'
+                        });
+                    } else {
+                        // Fallback for older browsers
+                        window.scrollTo(0, Math.max(0, offsetTop));
+                    }
+                }
+            }
+
+            updateActiveSection() {
+                let currentSection = '';
+                const scrollPosition = window.scrollY + this.navbarHeight + this.sectionNavbarHeight + 50; // Threshold dikurangi
+
+                // Cari section yang sedang aktif
+                this.sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+
+                    // Debug log untuk melihat posisi
+                    if (sectionId === 'visi-misi') {
+                        console.log('Visi Misi - Top:', sectionTop, 'Scroll Pos:', scrollPosition);
+                    }
+
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight && sectionId) {
+                        currentSection = sectionId;
+                    }
+                });
+
+                // Jika tidak ada section yang aktif, cari yang terdekat
+                if (!currentSection && this.sections.length > 0) {
+                    let closestSection = this.sections[0];
+                    let closestDistance = Math.abs(this.sections[0].offsetTop - scrollPosition);
+
+                    this.sections.forEach(section => {
+                        const distance = Math.abs(section.offsetTop - scrollPosition);
+                        if (distance < closestDistance) {
+                            closestDistance = distance;
+                            closestSection = section;
+                        }
+                    });
+
+                    currentSection = closestSection.getAttribute('id');
+                }
+
+                if (currentSection && currentSection !== this.currentActive) {
+                    this.currentActive = currentSection;
+
+                    console.log('Active section changed to:', currentSection); // Debug log
+
+                    // Update active link
+                    this.sectionLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${currentSection}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            }
+
+            handleSectionNavbarVisibility() {
+                const heroSection = document.querySelector('.hero-section');
+                if (!heroSection) return;
+
+                const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+                const scrollPosition = window.scrollY;
+
+                if (scrollPosition >= heroBottom - this.navbarHeight) {
+                    this.sectionNavbar.style.position = 'fixed';
+                    this.sectionNavbar.style.top = `${this.navbarHeight}px`;
+                    this.sectionNavbar.style.width = '100%';
+                } else {
+                    this.sectionNavbar.style.position = 'sticky';
+                    this.sectionNavbar.style.top = `${this.navbarHeight}px`;
+                    this.sectionNavbar.style.width = '100%';
+                }
+            }
+        }
+
+        // Perbaikan untuk navigasi section
+        document.addEventListener('DOMContentLoaded', function () {
+            const sectionLinks = document.querySelectorAll('.section-nav-link');
+
+            sectionLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    // Hapus kelas active dari semua link
+                    sectionLinks.forEach(l => l.classList.remove('active'));
+
+                    // Tambah kelas active ke link yang diklik
+                    this.classList.add('active');
+
+                    // Dapatkan target section
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+
+                    if (targetSection) {
+                        // Hitung offset dengan mempertimbangkan tinggi navbar
+                        const navbarHeight = document.querySelector('.sticky-navbar').offsetHeight;
+                        const sectionNavHeight = document.querySelector('.section-navbar').offsetHeight;
+                        const offsetTop = targetSection.offsetTop - navbarHeight - sectionNavHeight;
+
+                        // Scroll ke section
+                        window.scrollTo({
+                            top: Math.max(0, offsetTop),
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Update active section saat scroll
+            window.addEventListener('scroll', function () {
+                const sections = document.querySelectorAll('section[id], div[id]');
+                const scrollPos = window.scrollY + 200; // Offset untuk menentukan section aktif
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        sectionLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${sectionId}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            });
+        });
+
+        // Fallback untuk smooth scroll di browser lama
+        if (!('scrollBehavior' in document.documentElement.style)) {
+            document.querySelectorAll('.section-nav-link').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+
+                    if (targetSection) {
+                        const navbar = document.querySelector('.sticky-navbar');
+                        const sectionNav = document.querySelector('.section-navbar');
+                        const offsetTop = targetSection.offsetTop -
+                            (navbar ? navbar.offsetHeight : 0) -
+                            (sectionNav ? sectionNav.offsetHeight : 0) - 10;
+
+                        window.scrollTo(0, Math.max(0, offsetTop));
+                    }
+                });
+            });
+        }
+
+        // Scroll Behavior untuk Navbar
+        class NavbarScrollBehavior {
+            constructor() {
+                this.mainNavbar = document.getElementById('mainNavbar') || document.querySelector('.sticky-navbar');
+                this.sectionNavbar = document.getElementById('sectionNavbar') || document.querySelector('.section-navbar');
+                this.lastScrollY = window.scrollY;
+                this.scrollThreshold = 100; // Scroll berapa pixel sebelum navbar utama hilang
+                this.isMainNavHidden = false;
+
+                // Only init if mainNavbar exists
+                if (this.mainNavbar) {
+                    this.init();
+                }
+            }
+
+            init() {
+                window.addEventListener('scroll', () => {
+                    this.handleScroll();
+                });
+
+                // Initial check
+                this.handleScroll();
+            }
+
+            handleScroll() {
+                if (!this.mainNavbar) return;
+                
+                const currentScrollY = window.scrollY;
+                const scrollDirection = currentScrollY > this.lastScrollY ? 'down' : 'up';
+
+                // Jika scroll ke bawah melebihi threshold, sembunyikan navbar utama
+                if (scrollDirection === 'down' && currentScrollY > this.scrollThreshold && !this.isMainNavHidden) {
+                    this.hideMainNavbar();
+                }
+                // Jika scroll ke atas, tampilkan navbar utama
+                else if (scrollDirection === 'up' && this.isMainNavHidden) {
+                    this.showMainNavbar();
+                }
+                // Jika di paling atas, pastikan navbar utama visible
+                else if (currentScrollY <= this.scrollThreshold && this.isMainNavHidden) {
+                    this.showMainNavbar();
+                }
+
+                this.lastScrollY = currentScrollY;
+            }
+
+            hideMainNavbar() {
+                if (this.mainNavbar) this.mainNavbar.classList.add('hidden');
+                if (this.sectionNavbar) this.sectionNavbar.classList.add('main-sticky');
+                document.body.classList.add('nav-main-hidden');
+                this.isMainNavHidden = true;
+            }
+
+            showMainNavbar() {
+                if (this.mainNavbar) this.mainNavbar.classList.remove('hidden');
+                if (this.sectionNavbar) this.sectionNavbar.classList.remove('main-sticky');
+                document.body.classList.remove('nav-main-hidden');
+                this.isMainNavHidden = false;
+            }
+        }
+
+        // Compact navbar saat scroll
+        class CompactNavbar {
+            constructor() {
+                this.mainNavbar = document.getElementById('mainNavbar') || document.querySelector('.sticky-navbar');
+                this.compactThreshold = 50;
+
+                // Only init if mainNavbar exists
+                if (this.mainNavbar) {
+                    this.init();
+                }
+            }
+
+            init() {
+                window.addEventListener('scroll', () => {
+                    this.toggleCompact();
+                });
+            }
+
+            toggleCompact() {
+                if (!this.mainNavbar) return;
+                
+                if (window.scrollY > this.compactThreshold) {
+                    this.mainNavbar.classList.add('compact');
+                } else {
+                    this.mainNavbar.classList.remove('compact');
+                }
+            }
+        }
+
+        // Initialize semua behavior ketika DOM ready
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize scroll behavior
+            new NavbarScrollBehavior();
+            new CompactNavbar();
+
+            // Initialize roadmap carousel jika ada
+            const roadmapCards = document.querySelectorAll('.roadmap-card');
+            if (roadmapCards.length > 0) {
+                new RoadmapCarousel();
+            }
+
+            // Initialize section navigation
+            new SectionNavigation();
+        });
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new RoadmapCarousel();
+            new SectionNavigation();
+            
+            // Mobile Menu Toggle
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (mobileMenuToggle && navMenu) {
+                // Ensure all nav items are visible when menu opens
+                mobileMenuToggle.addEventListener('click', function() {
+                    mobileMenuToggle.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+                    
+                    // Force all nav items to be visible when menu is active
+                    if (navMenu.classList.contains('active')) {
+                        const allNavItems = navMenu.querySelectorAll('.nav-item');
+                        allNavItems.forEach(item => {
+                            item.style.display = 'block';
+                            item.style.visibility = 'visible';
+                            item.style.opacity = '1';
+                        });
+                    }
+                });
+                
+                // Close menu when clicking on a link
+                const navLinks = navMenu.querySelectorAll('.nav-link:not(.dropdown-toggle)');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileMenuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                    });
+                });
+                
+            }
+            
+            // Section Navigation Toggle (Mobile)
+            const sectionNavToggle = document.getElementById('sectionNavToggle');
+            const sectionNavContainer = document.querySelector('.section-nav-container');
+            
+            if (sectionNavToggle && sectionNavContainer) {
+                sectionNavToggle.addEventListener('click', function() {
+                    sectionNavToggle.classList.toggle('active');
+                    sectionNavContainer.classList.toggle('expanded');
+                });
+                
+                // Close when clicking on a link
+                const sectionNavLinks = sectionNavContainer.querySelectorAll('.section-nav-link');
+                sectionNavLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        sectionNavToggle.classList.remove('active');
+                        sectionNavContainer.classList.remove('expanded');
+                    });
+                });
+            }
+        });
+
+        // Toggle Dropdown for Mobile only (Desktop uses hover)
+        function toggleDropdown(event, element) {
+            // Hanya jalankan di mobile (≤768px)
+            if (window.innerWidth > 768) {
+                return; // Skip click handler di desktop
+            }
+            
+            event.preventDefault();
+            event.stopPropagation();
+            
+            const dropdown = element.nextElementSibling;
+            const allDropdowns = document.querySelectorAll('.dropdown-menu');
+            const allIcons = document.querySelectorAll('.dropdown-icon');
+            
+            // Close all other dropdowns
+            allDropdowns.forEach(dd => {
+                if (dd !== dropdown) {
+                    dd.classList.remove('show');
+                }
+            });
+            
+            // Reset all icons
+            allIcons.forEach(icon => {
+                if (icon !== element.querySelector('.dropdown-icon')) {
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            // Toggle current dropdown
+            if (dropdown) {
+                dropdown.classList.toggle('show');
+                
+                // Rotate chevron icon
+                const icon = element.querySelector('.dropdown-icon');
+                if (icon) {
+                    icon.style.transform = dropdown.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+                }
+            }
+        }
+        
+        // Close dropdown and mobile menu when clicking outside (single event listener)
+        document.addEventListener('click', function(event) {
+            // Close dropdown jika klik di luar dropdown
+            if (!event.target.closest('.nav-item.dropdown')) {
+                const allDropdowns = document.querySelectorAll('.dropdown-menu');
+                const allIcons = document.querySelectorAll('.dropdown-icon');
+                
+                allDropdowns.forEach(dd => {
+                    dd.classList.remove('show');
+                });
+                
+                allIcons.forEach(icon => {
+                    icon.style.transform = 'rotate(0deg)';
+                });
+            }
+            
+            // Close mobile menu jika klik di luar (hanya jika menu aktif)
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (mobileMenuToggle && navMenu && navMenu.classList.contains('active')) {
+                const isClickInsideNav = navMenu.contains(event.target);
+                const isClickOnToggle = mobileMenuToggle.contains(event.target);
+                
+                if (!isClickInsideNav && !isClickOnToggle) {
+                    mobileMenuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        });
+
+        // Initialize section navigation when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new RoadmapCarousel();
+            new SectionNavigation();
+        });
+    
+    // Logic Tombol Research Focus
+    document.addEventListener('DOMContentLoaded', () => {
+        const container = document.getElementById('scrollRF');
+        const btnPrev = document.getElementById('btnPrevRF');
+        const btnNext = document.getElementById('btnNextRF');
+
+        if(container && btnPrev && btnNext) {
+            btnNext.addEventListener('click', () => {
+                container.scrollBy({ left: 340, behavior: 'smooth' });
+            });
+            btnPrev.addEventListener('click', () => {
+                container.scrollBy({ left: -340, behavior: 'smooth' });
+            });
+        }
+    });
+
+    </script>
+
+</body>
+
+</html>

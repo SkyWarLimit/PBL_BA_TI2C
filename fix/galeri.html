@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratory Business Analytics</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="galeriStyle.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,700;1,800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Sticky Navigation Bar -->
+    <nav class="sticky-navbar">
+        <div class="logo-container">
+            <div class="logo">
+                <img src="./assets/img/logo.png" alt="Laboratorium Business Analytics Logo">
+            </div>
+            <div class="lab-name-container">
+                <div class="lab-name">Laboratorium Business Analytics</div>
+                <div class="lab-tagline">Transforming Data into Decisions</div>
+            </div>
+        </div>
+
+        <!-- Hamburger Menu Button (Mobile Only) -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-menu" id="navMenu">
+            <!-- Mobile Logo Container -->
+            <li class="nav-item mobile-logo-item">
+                <div class="mobile-logo-container">
+                    <div class="logo">
+                        <img src="./assets/img/logo.png" alt="Laboratorium Business Analytics Logo">
+                    </div>
+                    <div class="lab-name">Laboratorium Business Analytics</div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="beranda.html">Beranda</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="profile.html">Profil</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle active" href="#" onclick="toggleDropdown(event, this)">
+                    Publikasi
+                    <i class="fas fa-chevron-down dropdown-icon"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="berita.html">Berita</a></li>
+                    <li><a class="dropdown-item" href="galeri.html">Gallery</a></li>
+                    <li><a class="dropdown-item" href="newsInputService.html">News Input Service</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" onclick="toggleDropdown(event, this)">
+                    Peminjaman Lab
+                    <i class="fas fa-chevron-down dropdown-icon"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="infoPeminjaman.html">Informasi Laboratorium</a></li>
+                    <li><a class="dropdown-item" href="tableBooking.html">Table Peminjaman</a></li>
+                    <li><a class="dropdown-item" href="booking.html">Pemesanan Lab</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="kontak.html">Kontak</a>
+            </li>
+            <!-- Login Button in Mobile Menu -->
+            <li class="nav-item mobile-login-item">
+                <button class="login-btn mobile-login-btn">Login</button>
+            </li>
+        </ul>
+        
+        <!-- Login Button for Desktop -->
+        <button class="login-btn desktop-login-btn">Login</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-rectangle">
+            <!-- Background rectangle dengan opacity -->
+        </div>
+        <div class="hero-container">
+            <div class="hero-inner-rectangle">
+                <!-- Inner rectangle placeholder -->
+            </div>
+            <div class="hero-text-content">
+                <div class="about-overlay">
+                    <span class="about-text">Gallery</span>
+                </div>
+                <div class="title-content">
+                    <h1 class="hero-main-title">
+                        <span class="title-line">The Laboratory</span>
+                        <span class="title-line business-analytics">Business Analytics</span>
+                    </h1>
+                    <p class="hero-detailed-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+                        anim id est laborum.
+                    </p>
+                    <!-- Tombol Register For Laboratory Booking -->
+                    <div class="register-btn-container">
+                        <button class="register-btn">
+                            <span class="btn-text">
+                                news input service
+                                <i class="fas fa-arrow-up arrow-icon"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="py-5"></div>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-grid">
+                <!-- Column 1 -->
+                <div class="gallery-column">
+                    <div class="gallery-item">
+                        <img src="../assets/imgAdek/S1.jpg" alt="Gallery Image 10">
+                        <div class="gallery-overlay">
+                            <div class="gallery-text">
+                                <h3>Project Discussion</h3>
+                                <p>Brainstorming solutions</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="../assets/imgAdek/Panjang.jpg" alt="Gallery Image 6">
+                        <div class="gallery-overlay">
+                            <div class="gallery-text">
+                                <h3>Lab Equipment</h3>
+                                <p>State-of-the-art analytics tools</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="../assets/imgAdek/KecilBgt.jpg" alt="Gallery Image 3">
+                        <div class="gallery-overlay">
+                            <div class="gallery-text">
+                                <h3>Team Meeting</h3>
+                                <p>Strategic planning session</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="../assets/imgAdek/Panjang.jpg" alt="Gallery Image 1">
+                        <div class="gallery-overlay">
+                            <div class="gallery-text">
+                                <h3>Business Analytics Workshop</h3>
+                                <p>Team collaboration in data analysis</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="gallery-column">
+                    <div class="gallery-item">
+                        <img src="../assets/imgAdek/Kotak.jpg" alt="Gallery Image 11">
+                        <div class="gallery-overlay">
+                            <div class="gallery-text">
+                                <h3>Software Training</h3>
+                                <p>Learning new analytics tools</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="../assets/imgAdek/S4.jpg" alt="Gallery Image 8">
+                        <div class="gallery-overlay">
+                            <div class="gallery-text">
+                                <h3>Training Session</h3>
+                                <p>Developing analytical skills</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="../assets/imgAdek/Kotak1.JPG" alt="Gallery Image 4">
+                        <div class="gallery-overlay">
+                            <div class="gallery-text">
+                                <h3>Research Presentation</h3>
+                                <p>Sharing findings with stakeholders</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="../assets/imgAdek/S3.jpg" alt="Gallery Image 2">
+                        <div class="gallery-overlay">
+                            <div class="gallery-text">
+                                <h3>Data Visualization</h3>
+                                <p>Creating insightful dashboards</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 3 -->
+                <div class="gallery-column">
+                    <div class="gallery-item">
+                        <img src="../assets/imgAdek/S5.jpg" alt="Gallery Image 9">
+                        <div class="gallery-overlay">
+                            <div class="gallery-text">
+                                <h3>Data Processing</h3>
+                                <p>Analyzing large datasets</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="../assets/imgAdek/adel jkt48 on Twitter.jpeg" alt="Gallery Image 7">
+                        <div class="gallery-overlay">
+                            <div class="gallery-text">
+                                <h3>Collaboration</h3>
+                                <p>Teamwork in action</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="../assets/imgAdek/ADEL JKT48.jpeg" alt="Gallery Image 5">
+                        <div class="gallery-overlay">
+                            <div class="gallery-text">
+                                <h3>Data Analysis</h3>
+                                <p>Deep dive into business metrics</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 4 -->
+                <div class="gallery-column">
+                    <div class="gallery-item">
+                        <img src="../assets/imgAdek/adel jkt48 (1).jpeg" alt="Gallery Image 15">
+                        <div class="gallery-overlay">
+                            <div class="gallery-text">
+                                <h3>Team Collaboration</h3>
+                                <p>Working together on projects</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="../assets/imgAdek/S6.jpg" alt="Gallery Image 14">
+                        <div class="gallery-overlay">
+                            <div class="gallery-text">
+                                <h3>Analytics Tools</h3>
+                                <p>Exploring new software solutions</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="../assets/imgAdek/Kotak2.JPG" alt="Gallery Image 13">
+                        <div class="gallery-overlay">
+                            <div class="gallery-text">
+                                <h3>Data Workshop</h3>
+                                <p>Hands-on data analysis session</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="../assets/imgAdek/S2.jpg" alt="Gallery Image 12">
+                        <div class="gallery-overlay">
+                            <div class="gallery-text">
+                                <h3>Team Building</h3>
+                                <p>Strengthening collaboration</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        
+        // --- LOGIKA MASONRY (SUSUNAN FOTO) ---
+        const allGalleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+        const columns = document.querySelectorAll('.gallery-column');
+
+        function optimizeMasonryLayout() {
+            const isMobile = window.innerWidth <= 768;
+            
+            // Mobile = 2 kolom, Desktop = 4 kolom
+            const columnCount = isMobile ? 2 : 4;
+            
+            // 1. Reset: Kosongkan semua kolom HTML dulu
+            columns.forEach(col => {
+                col.innerHTML = ''; 
+                col.style.display = 'none'; // Sembunyikan semua kolom
+            });
+
+            // 2. Aktifkan hanya kolom yang dibutuhkan
+            for (let i = 0; i < columnCount; i++) {
+                columns[i].style.display = 'flex';
+            }
+
+            // 3. Distribusi Foto (Algoritma Kolom Terpendek)
+            // Array untuk menyimpan tinggi sementara setiap kolom aktif
+            let colHeights = new Array(columnCount).fill(0);
+
+            allGalleryItems.forEach((item) => {
+                // Cari kolom mana yang paling pendek saat ini
+                const minHeight = Math.min(...colHeights);
+                const shortestColIndex = colHeights.indexOf(minHeight);
+
+                // Masukkan foto ke kolom terpendek itu
+                columns[shortestColIndex].appendChild(item);
+
+                // Update tinggi kolom (perkiraan) agar loop berikutnya tau
+                // Kita pakai tinggi gambar atau nilai default jika belum load
+                const img = item.querySelector('img');
+                const itemHeight = (img.naturalHeight || 200) + 50; // +50 untuk teks
+                colHeights[shortestColIndex] += itemHeight;
+            });
+        }
+
+        // Jalankan fungsi layout
+        // Beri jeda dikit biar CSS load duluan
+        setTimeout(optimizeMasonryLayout, 100);
+        
+        // Jalankan lagi saat layar di-resize (putar HP dll)
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(optimizeMasonryLayout, 200);
+        });
+        
+        // Jalankan lagi saat semua gambar selesai dimuat (biar tinggi akurat)
+        window.addEventListener('load', optimizeMasonryLayout);
+
+
+        // --- LAZY LOADING GAMBAR ---
+        const galleryImages = document.querySelectorAll('.gallery-item img');
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    // Trigger load
+                    img.src = img.src; 
+                    img.style.opacity = 1;
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+        galleryImages.forEach(img => imageObserver.observe(img));
+    });
+
+    // --- SCRIPT DROPDOWN & MENU MOBILE (TETAP SAMA) ---
+    window.toggleDropdown = function(event, element) {
+        if (window.innerWidth > 768) return;
+        event.preventDefault();
+        event.stopPropagation();
+        
+        const dropdown = element.nextElementSibling;
+        const allDropdowns = document.querySelectorAll('.dropdown-menu');
+        const allIcons = document.querySelectorAll('.dropdown-icon');
+        
+        allDropdowns.forEach(dd => { if (dd !== dropdown) dd.classList.remove('show'); });
+        allIcons.forEach(icon => { if (icon !== element.querySelector('.dropdown-icon')) icon.style.transform = 'rotate(0deg)'; });
+        
+        if (dropdown) {
+            dropdown.classList.toggle('show');
+            const icon = element.querySelector('.dropdown-icon');
+            if (icon) icon.style.transform = dropdown.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+    };
+    
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.nav-item.dropdown')) {
+            document.querySelectorAll('.dropdown-menu').forEach(dd => dd.classList.remove('show'));
+            document.querySelectorAll('.dropdown-icon').forEach(icon => icon.style.transform = 'rotate(0deg)');
+        }
+        
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        if (mobileMenuToggle && navMenu && navMenu.classList.contains('active')) {
+            const isClickInsideNav = navMenu.contains(event.target);
+            const isClickOnToggle = mobileMenuToggle.contains(event.target);
+            if (!isClickInsideNav && !isClickOnToggle) {
+                mobileMenuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        if (mobileMenuToggle && navMenu) {
+            mobileMenuToggle.addEventListener('click', function() {
+                mobileMenuToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+            });
+            
+            const navLinks = navMenu.querySelectorAll('.nav-link:not(.dropdown-toggle)');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+    });
+</script>
+</body>
+
+</html>
