@@ -316,6 +316,15 @@ body {
 }
 
 @media (max-width: 992px) {
+  @media (max-width: 992px) {
+    .register-btn-container {
+        text-align: center;
+    }
+    /* KODE BARU: Memusatkan tombol yang merupakan elemen block dengan lebar tetap */
+    .register-btn {
+        margin: 0 auto; /* Ini akan memusatkan tombol secara horizontal */
+    }
+}
   .sticky-navbar {
     padding: 0 20px;
   }
@@ -433,44 +442,349 @@ body {
   }
 }
 
-/* Update pada bagian Responsive Mobile (max-width: 768px) */
 @media (max-width: 768px) {
-    .gallery-grid {
-        /* Pastikan tetap row, bukan column */
-        flex-direction: row !important;
-        align-items: flex-start; /* Penting agar item menempel ke atas */
-        gap: 10px; /* Jarak antar kolom lebih kecil di mobile */
-    }
-    
-    .gallery-column {
-        /* Paksa menjadi 2 kolom (50% kurang sedikit untuk gap) */
-        max-width: calc(50% - 5px);
-        flex: 0 0 calc(50% - 5px);
-        width: calc(50% - 5px);
-        
-        /* Reset margin/padding jika ada */
-        margin: 0;
-    }
-    
-    /* Sesuaikan ukuran teks agar tidak terlalu besar di 2 kolom */
-    .gallery-text h3 {
-        font-size: 14px;
-    }
-    
-    .gallery-text p {
-        font-size: 11px;
-    }
-    
-    /* Sembunyikan kolom 3 dan 4 jika kosong (ditangani JS nanti) */
-    .gallery-column:nth-child(3),
-    .gallery-column:nth-child(4) {
-        display: none; 
-    }
-    
-    /* Pastikan kolom 3 & 4 tetap muncul jika JS belum load (fallback) */
-    .gallery-column.active-col {
-        display: flex;
-    }
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    padding-top: 70px;
+  }
+
+  .sticky-navbar {
+    height: 70px;
+    padding: 10px 20px;
+    flex-wrap: nowrap;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    width: 100%;
+  }
+  
+  .nav-menu {
+    align-items: flex-start;
+  }
+  
+  .nav-item.dropdown {
+    display: block !important;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+
+  .lab-name-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .lab-name {
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .lab-tagline {
+    font-size: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Show hamburger menu */
+  .mobile-menu-toggle {
+    display: flex;
+    order: 3;
+  }
+
+  /* Hide desktop login button on mobile */
+  .desktop-login-btn {
+    display: none;
+  }
+
+
+  /* Mobile Menu Styles */
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 0 !important;
+    margin: 0 !important;
+    gap: 0;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1001;
+    display: flex;
+  }
+
+  .nav-menu.active {
+    transform: translateX(0);
+  }
+
+  /* Logo in Mobile Menu */
+  .mobile-logo-container {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    margin: 0 !important;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+  }
+  
+  /* Ensure no gap at top of mobile menu */
+  .nav-item.mobile-logo-item:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  .nav-item.mobile-logo-item .mobile-logo-container {
+    margin-top: 0 !important;
+    padding-top: 15px !important;
+  }
+
+  .mobile-logo-container .logo {
+    width: 45px;
+    height: 45px;
+    margin-right: 12px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .mobile-logo-container .logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .mobile-logo-container .lab-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .nav-item {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .nav-item:last-child {
+    border-bottom: none;
+  }
+
+  .nav-item.mobile-logo-item {
+    border-bottom: 1px solid #e0e0e0;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .nav-link {
+    width: 100%;
+    padding: 10px 20px;
+    height: auto;
+    justify-content: space-between;
+    font-size: 15px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-link.active::after {
+    display: none;
+  }
+
+  .nav-link.active {
+    background-color: rgba(43, 149, 253, 0.1);
+    color: #2b95fd;
+  }
+  
+  .nav-item.dropdown {
+    display: block !important;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-item.dropdown .nav-link {
+    width: 100%;
+    margin: 0;
+    padding: 10px 20px;
+    min-height: 0 !important;
+  }
+  
+  .nav-item.dropdown .nav-link.dropdown-toggle:active,
+  .nav-item.dropdown .nav-link.dropdown-toggle:focus {
+    min-height: 0 !important;
+  }
+
+  /* Dropdown Menu for Mobile - Clean and smooth */
+  .nav-item.dropdown .dropdown-menu {
+    position: static !important;
+    width: 100% !important;
+    display: none !important;
+    opacity: 0 !important;
+    transform: translateY(-5px) !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background-color: #f8f9fa !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-top: 1px solid #e9ecef !important;
+    border-bottom: 1px solid #e9ecef !important;
+    list-style: none !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    visibility: hidden !important;
+    transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+
+  .nav-item.dropdown .dropdown-menu.show {
+    display: block !important;
+    padding: 8px 0 !important;
+    max-height: 500px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    overflow: visible !important;
+  }
+  
+  /* Ensure dropdown items are visible when parent is shown */
+  .nav-item.dropdown .dropdown-menu.show li {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .nav-item.dropdown .dropdown-menu .dropdown-item {
+    padding: 12px 20px 12px 40px !important;
+    border-bottom: 1px solid #e9ecef !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    min-height: 44px !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    font-size: 15px !important;
+  }
+
+  .nav-item.dropdown .dropdown-menu .dropdown-item:first-child {
+    margin-top: 0 !important;
+  }
+
+  .nav-item.dropdown .dropdown-menu .dropdown-item:last-child {
+    border-bottom: none !important;
+    margin-bottom: 0 !important;
+  }
+
+  .nav-item.dropdown .dropdown-menu .dropdown-item:hover {
+    background-color: rgba(43, 149, 253, 0.1) !important;
+    transform: translateX(6px) !important;
+    color: #2b95fd !important;
+    padding-left: 44px !important;
+  }
+
+  .lab-name-container {
+    display: flex;
+  }
+
+  /* Show mobile logo in menu */
+  .mobile-logo-item {
+    display: block !important;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* ========================================= */
+  /* MOBILE LOGIN BUTTON - SEPARATE SECTION */
+  /* ========================================= */
+  
+  /* Mobile Login Button Container - Posisi di paling bawah */
+  .mobile-login-item {
+    display: block;
+    width: 100%;
+    border-top: 1px solid #e0e0e0;
+    margin: 0;
+    margin-top: auto;
+    padding: 0;
+    flex-shrink: 0;
+    order: 999;
+  }
+
+  /* Mobile Login Button Styling */
+  .mobile-login-item .mobile-login-btn {
+    width: calc(100% - 40px);
+    margin: 12px 20px;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 6px;
+    background-color: #2b95fd;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    display: block;
+  }
+
+  .mobile-login-item .mobile-login-btn:hover {
+    background-color: #1a7fd8;
+  }
+  
+  .mobile-login-item .mobile-login-btn:active {
+    background-color: #1565a8;
+  }
 }
 
 /* ========================================= */
@@ -705,10 +1019,6 @@ body {
   margin-top: 30px;
   position: relative;
   z-index: 3;
-  /* Tambahan untuk menengahkan tombol */
-  display: flex;
-  justify-content: center;
-  width: 100%;
 }
 
 .register-btn {
@@ -883,36 +1193,25 @@ body {
     }
     
     .gallery-grid {
-        /* GANTI: Paksa menjadi baris (row) agar bisa 2 kolom */
-        flex-direction: row !important; 
-        align-items: flex-start !important;
-        flex-wrap: wrap;
-        gap: 10px; /* Jarak antar foto lebih kecil */
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
     }
     
     .gallery-column {
-        /* GANTI: Lebar 50% agar muat 2 kolom */
-        max-width: 50% !important;
-        flex: 0 0 50% !important;
-        width: 50% !important;
-        padding: 0 5px; /* Sedikit padding agar foto tidak nempel */
-    }
-    
-    /* Sembunyikan kolom 3 dan 4 secara default di mobile, 
-       nanti JS akan memindahkan fotonya ke kolom 1 dan 2 */
-    .gallery-column:nth-child(3),
-    .gallery-column:nth-child(4) {
-        display: none;
+        max-width: 100%;
+        flex: 0 0 100%;
+        width: 100%;
     }
     
     .gallery-overlay {
         opacity: 1;
-        padding: 10px;
+        padding: 15px;
     }
     
     .gallery-item {
-        max-width: 100%; /* Pastikan foto memenuhi kolom */
-        margin-bottom: 10px;
+        max-width: 400px;
+        margin: 0 auto;
     }
 }
 
@@ -957,3 +1256,121 @@ body {
 .gallery-column:nth-child(2) .gallery-item { animation-delay: 0.2s; }
 .gallery-column:nth-child(3) .gallery-item { animation-delay: 0.3s; }
 .gallery-column:nth-child(4) .gallery-item { animation-delay: 0.4s; }
+/* ========================================= */
+/* GALLERY SECTION STYLING - PINTEREST/MASONRY */
+/* ========================================= */
+
+.gallery-section {
+    padding: 60px 0;
+    background-color: #ffffff;
+}
+
+.gallery-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.gallery-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+    max-width: 310px;
+}
+/* ... (kode CSS lainnya di bagian ini) ... */
+
+/* Responsive Design untuk Gallery */
+@media (max-width: 1200px) {
+    .gallery-grid {
+        gap: 15px;
+    }
+    
+    .gallery-column {
+        max-width: calc(25% - 15px);
+    }
+}
+
+@media (max-width: 992px) {
+    .gallery-section {
+        padding: 50px 0;
+    }
+    
+    .gallery-grid {
+        /* Kembali ke tata letak 4 kolom di layar tablet besar */
+        flex-wrap: nowrap;
+        gap: 15px;
+        padding: 0 30px;
+    }
+    
+    .gallery-column {
+        max-width: calc(25% - 15px); /* Pertahankan 4 kolom */
+        flex: 1;
+    }
+}
+
+/* MODIFIKASI UNTUK 2 KOLOM PADA LAYAR MOBILE/TABLET KECIL (max 768px) */
+@media (max-width: 768px) {
+    .gallery-section {
+        padding: 40px 0;
+    }
+    
+    .gallery-grid {
+        flex-wrap: wrap; /* Izinkan wrapping jika kolom lebih dari 2 */
+        flex-direction: row; /* Ubah kembali ke baris */
+        justify-content: space-between;
+        gap: 10px; /* Kurangi gap untuk mobile */
+        padding: 0 15px;
+        max-width: none;
+    }
+    
+    .gallery-column {
+        /* Set 50% lebar dikurangi setengah gap untuk 2 kolom */
+        max-width: calc(50% - 5px); 
+        flex: 0 0 calc(50% - 5px);
+        width: calc(50% - 5px);
+        gap: 10px;
+    }
+    
+    .gallery-overlay {
+        opacity: 1; /* Biarkan overlay tetap terlihat di mobile/tablet */
+        padding: 15px;
+    }
+    
+    .gallery-item {
+        max-width: none; /* Izinkan item memenuhi lebar kolom */
+        margin: 0;
+    }
+}
+
+/* MODIFIKASI UNTUK MOBILE SANGAT KECIL (max 480px) */
+@media (max-width: 480px) {
+    .gallery-section {
+        padding: 30px 0;
+    }
+    
+    .gallery-grid {
+        gap: 8px;
+        padding: 0 10px;
+    }
+    
+    .gallery-column {
+        max-width: calc(50% - 4px);
+        flex: 0 0 calc(50% - 4px);
+        width: calc(50% - 4px);
+        gap: 8px;
+    }
+    
+    .gallery-text h3 {
+        font-size: 14px;
+    }
+    
+    .gallery-text p {
+        font-size: 12px;
+    }
+}
+
+/* ... (kode CSS animasi di bagian ini) ... */

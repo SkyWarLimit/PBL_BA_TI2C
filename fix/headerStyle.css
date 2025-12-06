@@ -451,79 +451,43 @@ body {
   }
 }
 
-/* ========================================= */
-/* FIX RESPONSIVE: MENU TURUN KE BAWAH       */
-/* ========================================= */
-
-@media (max-width: 991px) {
-  
-  /* 1. Hamburger Menu */
-  .mobile-menu-toggle {
-    display: flex; /* Munculkan tombol hamburger */
+@media (max-width: 992px) {
+  .sticky-navbar {
+    padding: 0 20px;
   }
 
-  /* 2. Container Menu (Ubah dari Fixed Side ke Absolute Dropdown) */
   .nav-menu {
-    position: absolute;       /* Nempel di navbar */
-    top: 80px;                /* Muncul tepat di bawah navbar (sesuai tinggi navbar) */
-    left: 0;
-    width: 100%;              /* Lebar penuh */
-    height: auto;             /* Tinggi menyesuaikan isi menu (JANGAN 100vh) */
-    background-color: white;  /* Background putih */
-    
-    flex-direction: column;   /* Susun menu ke bawah */
-    align-items: flex-start;  /* Rata kiri */
-    padding: 0;
-    
-    /* Kondisi Awal: Sembunyi */
-    display: none;            
-    opacity: 0;
-    transform: translateY(-10px); /* Geser sedikit ke atas */
-    transition: all 0.3s ease;
-    
-    /* Bayangan & Border */
-    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-    border-top: 1px solid #eee;
+    gap: 20px;
   }
 
-  /* 3. Saat Menu Aktif (Diklik) */
-  .nav-menu.active {
-    display: flex;            /* Munculkan */
-    opacity: 1;
-    transform: translateY(0); /* Posisi normal */
+  .lab-name {
+    font-size: 16px;
   }
 
-  /* 4. Style Item Menu di Mobile */
-  .nav-item {
-    width: 100%;
-    margin: 0;
-    border-bottom: 1px solid #f0f0f0; /* Garis pemisah antar menu */
+  .lab-tagline {
+    font-size: 11px;
   }
 
   .nav-link {
-    width: 100%;
-    padding: 15px 25px; /* Jarak klik yang nyaman */
-    justify-content: flex-start; /* Teks rata kiri */
+    font-size: 14px;
   }
 
-  /* Dropdown di Mobile (Sub-menu) */
   .dropdown-menu {
-    position: static !important; /* Supaya nempel di bawah induknya, ga melayang */
-    width: 100%;
-    box-shadow: none;
-    border: none;
-    background-color: #f9f9f9; /* Agak abu biar beda */
-    padding-left: 20px; /* Masuk ke dalam */
+    width: 220px; /* Diperlebar dari 180px menjadi 220px */
+    margin-top: 0;
+  }
+
+  /* Untuk mobile, tetap menggunakan klik */
+  .nav-item.dropdown:hover .dropdown-menu {
     display: none;
   }
-  
-  .dropdown-menu.show {
-    display: block;
-  }
 
-  /* Sembunyikan tombol login desktop, tampilkan mobile (jika ada) */
-  .desktop-login-btn { display: none; }
-  .mobile-login-item { display: block; }
+  .nav-item.dropdown .dropdown-menu.show {
+    display: block;
+    opacity: 1;
+    transform: none;
+    margin-top: 0;
+  }
 }
 
 @media (max-width: 768px) {

@@ -1063,37 +1063,33 @@ body {
         /* ========================================= */
         /* RULES SECTION */
         /* ========================================= */
-
-.rules-container {
-    background-color: #eef7ff; /* Mengubah warna background jadi biru sangat muda agar beda dengan form */
-    border: 1px solid #dceeff;
-    padding: 30px 40px;
-    border-radius: 12px;
-    height: fit-content;
-    margin-bottom: 20px;
-}
-
-.rules-title {
-    color: #2b95fd; /* Menggunakan warna primary */
-    font-weight: 700;
-    font-size: 24px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-}
-
-.rules-content {
-    color: #333;
-    font-weight: 500; /* Sedikit lebih tebal agar mudah dibaca */
-    font-size: 15px;
-    line-height: 1.6;
-    text-align: justify;
-}
-
-/* Menghapus divider lama karena kita pakai layout 2 kolom di dalam rules */
-.rules-divider {
-    display: none; 
-}
+        
+        .rules-container {
+            background-color: #f8f9fa;
+            padding: 40px 30px;
+            border-radius: 10px;
+            height: fit-content;
+        }
+        
+        .rules-title {
+            color: #04163E;
+            font-weight: 600;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .rules-content {
+            color: #000;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        .rules-divider {
+            height: 2px;
+            background-color: #ddd;
+            margin: 25px 0;
+        }
         
         /* Responsif untuk form input berita */
         @media (max-width: 992px) {

@@ -1136,8 +1136,7 @@ textarea.form-control {
 
 @media (max-width: 768px) {
   .contact-hero-bg {
-    width: 100%; /* Ubah jadi 100% agar full kiri-kanan */
-    border-radius: 0; /* Opsi tambahan: biar sikunya tidak melengkung di mode mobile */
+    width: 90%;
   }
 
   .contact-hero h1 {

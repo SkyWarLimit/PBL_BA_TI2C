@@ -561,6 +561,152 @@ body {
 }
 
 @media (max-width: 768px) {
+    .about-section p.lead {
+        /* Mengoverride ukuran font default (.lead) di mobile */
+        font-size: 1rem !important; /* Ukuran yang lebih kecil dari lead default */
+        line-height: 1.5;
+        text-align: justify; /* Agar teks terlihat rapi di mobile */
+    }
+    .news-item-sm {
+        /* Mengubah layout dari horizontal (flex-row) menjadi vertikal (column) */
+        flex-direction: column;
+        align-items: stretch; /* Agar gambar mengambil lebar penuh */
+        padding-bottom: 15px; /* Tambah padding bawah agar ada jarak antar berita */
+        border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .news-item-sm:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+    
+    .news-sm-img {
+        /* Perbesar dan tarik gambar ke atas */
+        width: 100%; /* Lebar gambar 100% dari kolom */
+        height: 150px; /* Tinggi gambar diperbesar */
+        margin-bottom: 10px; /* Jarak antara gambar dan teks */
+        flex-shrink: 0;
+    }
+    
+    .news-item-sm > div {
+        /* Container teks */
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    .news-item-sm h5 {
+        font-size: 1rem !important;
+        margin-bottom: 5px !important;
+    }
+    
+    .news-item-sm .line-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .profile-carousel-section {
+      padding: 40px 0; 
+      background-color: #f8f9fa;
+    }
+
+    .custom-container-relative {
+        padding: 0 20px; 
+    }
+
+    /* Hilangkan backdop abu-abu di mobile */
+    .gray-backdrop-box {
+        display: none; 
+    }
+
+    .carousel-wrapper {
+        overflow-x: scroll; 
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch; 
+        scroll-snap-type: x mandatory; 
+        padding-bottom: 5px; /* Tambahkan sedikit padding untuk scrollbar (jika muncul) */
+    }
+
+    .carousel-track {
+        display: flex;
+        width: auto; 
+        margin-left: -20px; /* Offset untuk kartu pertama */
+        padding-right: 20px; 
+    }
+    
+    /* Pengaturan ukuran kartu agar hanya 1 kartu yang terlihat penuh + sedikit kartu berikutnya (peek-a-boo) */
+    .custom-card {
+        flex: 0 0 calc(100% - 60px); /* Hanya satu kartu terlihat (100%) dikurangi 60px untuk kartu berikutnya */
+        max-width: calc(100% - 60px); 
+        height: 450px; 
+        margin-right: 20px; /* Jarak antar kartu */
+        margin-left: 0; 
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        scroll-snap-align: start; /* Kartu akan berhenti tepat di awal saat digeser */
+        
+        /* Gaya Kartu Mobile (Sesuai Gambar) */
+        border-radius: 12px;
+        position: relative;
+    }
+    
+    .carousel-track .custom-card:first-child {
+        margin-left: 20px; /* Padding kiri untuk kartu pertama */
+    }
+    
+    /* ================================================= */
+    /* EFEK AKTIF/HOVER/TOUCH MOBILE (Mengubah menjadi biru) */
+    /* ================================================= */
+    
+    /* Efek Active/Hover/Touch untuk tampilan mobile */
+    .custom-card.active, 
+    .custom-card:focus, /* Tambahkan focus untuk aksesibilitas dan tab-stop */
+    .custom-card:hover {
+        /* Warna latar belakang sesuai permintaan */
+        background-color: #003399; 
+        /* Gaya kartu yang aktif/fokus/hover */
+        transform: translateY(-5px); 
+        box-shadow: 0 12px 30px rgba(0, 51, 153, 0.3);
+        border-color: #003399;
+    }
+    
+    /* Style Konten di Kartu Aktif/Hover agar menjadi putih */
+    .custom-card.active .card-content h3,
+    .custom-card:focus .card-content h3,
+    .custom-card:hover .card-content h3,
+    .custom-card.active .card-content p,
+    .custom-card:focus .card-content p,
+    .custom-card:hover .card-content p {
+        color: white; /* Mengubah warna teks di kartu aktif menjadi putih */
+    }
+
+    /* Penyesuaian Navigasi (tetap ada di bawah carousel) */
+    .carousel-nav {
+        position: static; 
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 25px;
+    }
+
+    .nav-btn {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background-color: white;
+        border: 1px solid #ccc;
+        color: #333;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+    }
+
   html, body {
     margin: 0;
     padding: 0;
@@ -903,123 +1049,4 @@ body {
   .mobile-login-item .mobile-login-btn:active {
     background-color: #1565a8;
   }
-}
-/* ========================================= */
-/* DESAIN KARTU PREMIUM (STYLE PERTAMINA)    */
-/* ========================================= */
-
-.custom-card {
-    /* Layout & Box Model */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Isi mulai dari atas */
-    padding: 30px;
-    width: 320px;       /* Lebar Fix */
-    height: 400px;      /* Tinggi Fix */
-    
-    /* Styling Dasar (Tampilan Awal: PUTIH) */
-    background: #ffffff;
-    border-radius: 20px; /* Sudut lebih bulat modern */
-    border: none;        /* Hilangkan border biasa */
-    
-    /* Shadow yang elegan (Soft Depth) */
-    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-    
-    /* Positioning untuk elemen dekorasi */
-    position: relative;
-    overflow: hidden;
-    
-    /* Transisi Halus */
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
-}
-
-/* --- ISI KARTU --- */
-
-/* 1. Judul Project */
-.custom-card h3 {
-    font-size: 1.6rem;
-    font-weight: 800; /* Lebih tebal */
-    color: #212529;
-    margin-bottom: 20px;
-    line-height: 1.2;
-    z-index: 2;
-    transition: color 0.3s ease;
-}
-
-/* 2. Garis Aksen (Garis Merah di bawah Judul) */
-.custom-card::before {
-    content: '';
-    display: block;
-    width: 50px;       /* Panjang garis */
-    height: 4px;       /* Tebal garis */
-    background-color: #dc3545; /* Merah Pertamina */
-    border-radius: 2px;
-    margin-bottom: 20px;
-    transition: background-color 0.3s ease;
-}
-
-/* 3. Deskripsi */
-.custom-card p {
-    font-size: 0.95rem;
-    color: #6c757d; /* Abu-abu lembut */
-    line-height: 1.6;
-    z-index: 2;
-    transition: color 0.3s ease;
-}
-
-/* 4. Ikon Panah Dekoratif (Pojok Kanan Bawah) */
-.custom-card::after {
-    /* Kode Ikon Bootstrap (Arrow Right Circle) */
-    content: '\F138'; 
-    font-family: 'bootstrap-icons';
-    
-    position: absolute;
-    bottom: 25px;
-    right: 25px;
-    font-size: 3rem;   /* Ikon Besar */
-    color: #f1f3f5;    /* Abu sangat muda (samar) */
-    z-index: 1;
-    transition: all 0.4s ease;
-}
-
-/* ========================================= */
-/* EFEK HOVER (Saat Kursor Masuk)            */
-/* ========================================= */
-
-.custom-card:hover {
-    /* Background berubah jadi Biru Gradient */
-    background: linear-gradient(135deg, #0055cc 0%, #003399 100%);
-    
-    /* Kartu naik ke atas */
-    transform: translateY(-10px);
-    
-    /* Bayangan membiru dan membesar */
-    box-shadow: 0 20px 40px rgba(0, 51, 153, 0.3);
-}
-
-/* Ubah warna teks jadi PUTIH */
-.custom-card:hover h3,
-.custom-card:hover p {
-    color: #ffffff !important;
-}
-
-/* Ubah garis aksen jadi PUTIH */
-.custom-card:hover::before {
-    background-color: #ffffff !important;
-}
-
-/* Ubah ikon panah jadi PUTIH & LEBIH JELAS */
-.custom-card:hover::after {
-    color: rgba(255, 255, 255, 0.4); /* Putih transparan */
-    transform: translateX(5px); /* Geser sedikit ke kanan */
-}
-
-/* Class Active (Untuk JS Carousel) - Sama seperti Hover */
-.custom-card.active {
-    border: 2px solid #0055cc; /* Penanda aktif border biru */
-}
-/* Jika sedang di-hover, border active hilang biar tidak tabrakan */
-.custom-card.active:hover {
-    border-color: transparent;
 }

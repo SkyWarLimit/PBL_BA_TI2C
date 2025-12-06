@@ -69,7 +69,7 @@
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="infoPeminjaman.html">Informasi Laboratorium</a></li>
                     <li><a class="dropdown-item" href="tableBooking.html">Table Peminjaman</a></li>
-                    <li><a class="dropdown-item" href="booking.html">Pemesanan Lab</a></li>
+                    <li><a class="dropdown-item" href="bformBooking.html">Pemesanan Lab</a></li>
                 </ul>
             </li>
             <li class="nav-item">
@@ -301,142 +301,259 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom JavaScript -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        
-        // --- LOGIKA MASONRY (SUSUNAN FOTO) ---
-        const allGalleryItems = Array.from(document.querySelectorAll('.gallery-item'));
-        const columns = document.querySelectorAll('.gallery-column');
+    <script>
+        // JavaScript untuk optimalisasi layout Pinterest
+        document.addEventListener('DOMContentLoaded', function () {
+            function optimizeMasonryLayout() {
+                const columns = document.querySelectorAll('.gallery-column');
+                const container = document.querySelector('.gallery-grid');
 
-        function optimizeMasonryLayout() {
-            const isMobile = window.innerWidth <= 768;
-            
-            // Mobile = 2 kolom, Desktop = 4 kolom
-            const columnCount = isMobile ? 2 : 4;
-            
-            // 1. Reset: Kosongkan semua kolom HTML dulu
-            columns.forEach(col => {
-                col.innerHTML = ''; 
-                col.style.display = 'none'; // Sembunyikan semua kolom
-            });
+                // Reset heights
+                columns.forEach(col => col.style.height = 'auto');
 
-            // 2. Aktifkan hanya kolom yang dibutuhkan
-            for (let i = 0; i < columnCount; i++) {
-                columns[i].style.display = 'flex';
+                // Jika di mobile, tidak perlu optimisasi khusus
+                if (window.innerWidth <= 768) return;
+
+                // Hitung tinggi setiap kolom
+                const columnHeights = Array.from(columns).map(col => col.scrollHeight);
+                const maxHeight = Math.max(...columnHeights);
+                const minHeight = Math.min(...columnHeights);
+
+                // Jika perbedaan tinggi terlalu besar, redistribusi item
+                if (maxHeight - minHeight > 300) {
+                    redistributeItems();
+                }
             }
 
-            // 3. Distribusi Foto (Algoritma Kolom Terpendek)
-            // Array untuk menyimpan tinggi sementara setiap kolom aktif
-            let colHeights = new Array(columnCount).fill(0);
+            function redistributeItems() {
+                const columns = document.querySelectorAll('.gallery-column');
+                const allItems = [];
 
-            allGalleryItems.forEach((item) => {
-                // Cari kolom mana yang paling pendek saat ini
-                const minHeight = Math.min(...colHeights);
-                const shortestColIndex = colHeights.indexOf(minHeight);
+                // Kumpulkan semua item
+                columns.forEach(col => {
+                    const items = Array.from(col.children);
+                    allItems.push(...items);
+                    col.innerHTML = ''; // Kosongkan kolom
+                });
 
-                // Masukkan foto ke kolom terpendek itu
-                columns[shortestColIndex].appendChild(item);
+                // Acak urutan item untuk variasi
+                allItems.sort(() => Math.random() - 0.5);
 
-                // Update tinggi kolom (perkiraan) agar loop berikutnya tau
-                // Kita pakai tinggi gambar atau nilai default jika belum load
-                const img = item.querySelector('img');
-                const itemHeight = (img.naturalHeight || 200) + 50; // +50 untuk teks
-                colHeights[shortestColIndex] += itemHeight;
+                // Redistribusi item ke kolom
+                allItems.forEach((item, index) => {
+                    const targetColumn = columns[index % columns.length];
+                    targetColumn.appendChild(item);
+                });
+            }
+
+            // Jalankan optimisasi saat load dan resize
+            optimizeMasonryLayout();
+            window.addEventListener('resize', optimizeMasonryLayout);
+
+            // Tambahkan lazy loading untuk gambar
+            const galleryItems = document.querySelectorAll('.gallery-item img');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.src;
+                        imageObserver.unobserve(img);
+                    }
+                });
             });
-        }
 
-        // Jalankan fungsi layout
-        // Beri jeda dikit biar CSS load duluan
-        setTimeout(optimizeMasonryLayout, 100);
-        
-        // Jalankan lagi saat layar di-resize (putar HP dll)
-        let resizeTimer;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(optimizeMasonryLayout, 200);
+            galleryItems.forEach(img => imageObserver.observe(img));
         });
-        
-        // Jalankan lagi saat semua gambar selesai dimuat (biar tinggi akurat)
-        window.addEventListener('load', optimizeMasonryLayout);
 
-
-        // --- LAZY LOADING GAMBAR ---
-        const galleryImages = document.querySelectorAll('.gallery-item img');
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    // Trigger load
-                    img.src = img.src; 
-                    img.style.opacity = 1;
-                    imageObserver.unobserve(img);
+        // Toggle Dropdown for Mobile only (Desktop uses hover)
+        // Make it global so it can be called from onclick attribute
+        window.toggleDropdown = function(event, element) {
+            // Hanya jalankan di mobile (≤768px)
+            if (window.innerWidth > 768) {
+                return; // Skip click handler di desktop
+            }
+            
+            event.preventDefault();
+            event.stopPropagation();
+            
+            const dropdown = element.nextElementSibling;
+            const allDropdowns = document.querySelectorAll('.dropdown-menu');
+            const allIcons = document.querySelectorAll('.dropdown-icon');
+            
+            // Close all other dropdowns
+            allDropdowns.forEach(dd => {
+                if (dd !== dropdown) {
+                    dd.classList.remove('show');
                 }
             });
-        });
-        galleryImages.forEach(img => imageObserver.observe(img));
-    });
-
-    // --- SCRIPT DROPDOWN & MENU MOBILE (TETAP SAMA) ---
-    window.toggleDropdown = function(event, element) {
-        if (window.innerWidth > 768) return;
-        event.preventDefault();
-        event.stopPropagation();
-        
-        const dropdown = element.nextElementSibling;
-        const allDropdowns = document.querySelectorAll('.dropdown-menu');
-        const allIcons = document.querySelectorAll('.dropdown-icon');
-        
-        allDropdowns.forEach(dd => { if (dd !== dropdown) dd.classList.remove('show'); });
-        allIcons.forEach(icon => { if (icon !== element.querySelector('.dropdown-icon')) icon.style.transform = 'rotate(0deg)'; });
-        
-        if (dropdown) {
-            dropdown.classList.toggle('show');
-            const icon = element.querySelector('.dropdown-icon');
-            if (icon) icon.style.transform = dropdown.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
-        }
-    };
-    
-    document.addEventListener('click', function(event) {
-        if (!event.target.closest('.nav-item.dropdown')) {
-            document.querySelectorAll('.dropdown-menu').forEach(dd => dd.classList.remove('show'));
-            document.querySelectorAll('.dropdown-icon').forEach(icon => icon.style.transform = 'rotate(0deg)');
-        }
-        
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const navMenu = document.getElementById('navMenu');
-        
-        if (mobileMenuToggle && navMenu && navMenu.classList.contains('active')) {
-            const isClickInsideNav = navMenu.contains(event.target);
-            const isClickOnToggle = mobileMenuToggle.contains(event.target);
-            if (!isClickInsideNav && !isClickOnToggle) {
-                mobileMenuToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        }
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const navMenu = document.getElementById('navMenu');
-        
-        if (mobileMenuToggle && navMenu) {
-            mobileMenuToggle.addEventListener('click', function() {
-                mobileMenuToggle.classList.toggle('active');
-                navMenu.classList.toggle('active');
-                document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+            
+            // Reset all icons
+            allIcons.forEach(icon => {
+                if (icon !== element.querySelector('.dropdown-icon')) {
+                    icon.style.transform = 'rotate(0deg)';
+                }
             });
             
-            const navLinks = navMenu.querySelectorAll('.nav-link:not(.dropdown-toggle)');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
+            // Toggle current dropdown
+            if (dropdown) {
+                dropdown.classList.toggle('show');
+                
+                // Rotate chevron icon
+                const icon = element.querySelector('.dropdown-icon');
+                if (icon) {
+                    icon.style.transform = dropdown.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+                }
+            }
+        };
+        
+        // Close dropdown and mobile menu when clicking outside (single event listener)
+        document.addEventListener('click', function(event) {
+            // Close dropdown jika klik di luar dropdown
+            if (!event.target.closest('.nav-item.dropdown')) {
+                const allDropdowns = document.querySelectorAll('.dropdown-menu');
+                const allIcons = document.querySelectorAll('.dropdown-icon');
+                
+                allDropdowns.forEach(dd => {
+                    dd.classList.remove('show');
+                });
+                
+                allIcons.forEach(icon => {
+                    icon.style.transform = 'rotate(0deg)';
+                });
+            }
+            
+            // Close mobile menu jika klik di luar (hanya jika menu aktif)
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (mobileMenuToggle && navMenu && navMenu.classList.contains('active')) {
+                const isClickInsideNav = navMenu.contains(event.target);
+                const isClickOnToggle = mobileMenuToggle.contains(event.target);
+                
+                if (!isClickInsideNav && !isClickOnToggle) {
                     mobileMenuToggle.classList.remove('active');
                     navMenu.classList.remove('active');
                     document.body.style.overflow = '';
+                }
+            }
+        });
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (mobileMenuToggle && navMenu) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    mobileMenuToggle.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
                 });
+                
+                // Close menu when clicking on a link
+                const navLinks = navMenu.querySelectorAll('.nav-link:not(.dropdown-toggle)');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileMenuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                    });
+                });
+            }
+        });
+        
+    </script>
+    <script>
+    // JavaScript untuk optimalisasi layout Pinterest
+    document.addEventListener('DOMContentLoaded', function () {
+        function optimizeMasonryLayout() {
+            const container = document.querySelector('.gallery-grid');
+            const isMobile = window.innerWidth <= 768; // Tentukan kondisi 2 kolom
+
+            let columns = document.querySelectorAll('.gallery-column');
+            
+            // 1. Sesuaikan jumlah kolom jika di mobile
+            if (isMobile) {
+                // Jika sudah 2 kolom, biarkan saja
+                if (columns.length !== 2) {
+                    redistributeItems(2); // Gunakan 2 kolom
+                }
+            } else {
+                // Jika sudah 4 kolom, biarkan saja
+                if (columns.length !== 4) {
+                    redistributeItems(4); // Gunakan 4 kolom
+                }
+            }
+            
+            columns = document.querySelectorAll('.gallery-column'); // Ambil kolom terbaru
+
+            // Reset heights
+            columns.forEach(col => col.style.height = 'auto');
+
+            // Hentikan fungsi optimasi jika di mobile karena CSS sudah menghandle 2 kolom
+            if (isMobile) return; 
+
+            // Hitung tinggi setiap kolom (Logika Masonry Desktop)
+            const columnHeights = Array.from(columns).map(col => col.scrollHeight);
+            const maxHeight = Math.max(...columnHeights);
+            const minHeight = Math.min(...columnHeights);
+
+            // Jika perbedaan tinggi terlalu besar, redistribusi item
+            if (maxHeight - minHeight > 300) {
+                redistributeItems(columns.length);
+            }
+        }
+
+        function redistributeItems(targetColumnCount) {
+            const container = document.querySelector('.gallery-grid');
+            const currentColumns = Array.from(document.querySelectorAll('.gallery-column'));
+            const allItems = [];
+
+            // Kumpulkan semua item
+            currentColumns.forEach(col => {
+                const items = Array.from(col.children);
+                allItems.push(...items);
+            });
+            
+            // Hapus kolom yang ada
+            currentColumns.forEach(col => col.remove());
+
+            // Buat kolom baru sesuai targetColumnCount
+            const newColumns = [];
+            for (let i = 0; i < targetColumnCount; i++) {
+                const newCol = document.createElement('div');
+                newCol.className = 'gallery-column';
+                newColumns.push(newCol);
+                container.appendChild(newCol);
+            }
+
+            // Redistribusi item ke kolom
+            // Gunakan logika untuk menempatkan item ke kolom terpendek untuk efek masonry
+            allItems.forEach(item => {
+                // Cari kolom terpendek
+                let shortestColumn = newColumns[0];
+                let minHeight = shortestColumn.scrollHeight;
+
+                for (let i = 1; i < newColumns.length; i++) {
+                    if (newColumns[i].scrollHeight < minHeight) {
+                        minHeight = newColumns[i].scrollHeight;
+                        shortestColumn = newColumns[i];
+                    }
+                }
+                
+                shortestColumn.appendChild(item);
             });
         }
+
+        // Jalankan optimisasi saat load dan resize
+        optimizeMasonryLayout();
+        window.addEventListener('resize', optimizeMasonryLayout);
+
+        // ... (kode lazy loading dan toggleDropdown) ...
     });
+    
+    // ... (sisa kode JavaScript) ...
 </script>
 </body>
 
